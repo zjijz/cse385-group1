@@ -1,10 +1,10 @@
-import { TheBarsbPage } from './app.po';
+import { TheBarbsPage } from './app.po';
 
-describe('the-barsb App', function() {
-  let page: TheBarsbPage;
+describe('the-barbs App', function() {
+  let page: TheBarbsPage;
 
   beforeEach(() => {
-    page = new TheBarsbPage();
+    page = new TheBarbsPage();
   });
 
   it('should display message saying app works', () => {
