@@ -10,6 +10,7 @@ import { LoanScrollerComponent } from './components/loan-scroller/loan-scroller.
 import { HoldScrollerComponent } from './components/hold-scroller/hold-scroller.component';
 import { FeedWidgetComponent } from './components/feed-widget/feed-widget.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     HoldScrollerComponent,
     FeedWidgetComponent,
     SearchBarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
