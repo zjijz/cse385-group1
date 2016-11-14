@@ -1,0 +1,178 @@
+/** DB setup **/
+.mode column
+.headers ON
+PRAGMA foreign_keys = ON;
+
+/** Tables **/
+CREATE TABLE IF NOT EXISTS Book (
+	BookId INT NOT NULL,
+	ISBM VARCHAR(10) NOT NULL,
+	Title VARCHAR(30) NOT NULL,
+	Edition VARCHAR(10),
+	Publisher VARCHAR(25),
+	PubDate DATE,
+	Summary VARCHAR(250) NOT NULL,
+	File VARCHAR(100) NOT NULL,
+  NumCopies INT NOT NULL,
+	PRIMARY KEY (BookID)
+);
+
+CREATE TABLE IF NOT EXISTS Author (
+ 	BookId INT NOT NULL,
+  Fname VARCHAR(30) NOT NULL,
+  Lname VARCHAR(30) NOT NULL,
+  PRIMARY KEY (BookId, Fname, Lname),
+  FOREIGN KEY (BookId) REFERENCES Book(BookId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Genre (
+  GenreId INT NOT NULL,
+  GenreName VARCHAR(20) NOT NULL,
+ 	PRIMARY KEY (GenreId)
+);
+
+CREATE TABLE IF NOT EXISTS BookGenre (
+  BookId INT NOT NULL,
+  GenreId INT NOT NULL,
+  PRIMARY KEY (BookId, GenreId),
+  FOREIGN KEY (BookId) REFERENCES Book(BookId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  FOREIGN KEY (GenreId) REFERENCES Genre(GenreId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Hold (
+ 	BookId INT NOT NULL,
+ 	Email VARCHAR(50) NOT NULL,
+  StartDate DATE NOT NULL,
+ 	EndDate DATE NOT NULL,
+ 	PRIMARY KEY (BookId, Email),
+  FOREIGN KEY (BookId) REFERENCES Book(BookId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  FOREIGN KEY (Email) REFERENCES User(Email)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Loan (
+ 	BookId INT NOT NULL,
+  Email VARCHAR(50) NOT NULL,
+ 	StartDate DATE NOT NULL,
+ 	EndDate DATE NOT NULL,
+ 	PRIMARY KEY (BookId, Email),
+  FOREIGN KEY (BookId) REFERENCES Book(BookId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  FOREIGN KEY (Email) REFERENCES User(Email)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Review (
+  BookId INT NOT NULL,
+  Email VARCHAR(50) NOT NULL,
+  Rating INT NOT NULL,
+  Words VARCHAR(140) NOT NULL,
+  PRIMARY KEY (BookId, Email),
+  FOREIGN KEY (BookId) REFERENCES Book(BookId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  FOREIGN KEY (Email) REFERENCES User(Email)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Privilege (
+  PrivId INT NOT NULL,
+  PrivName INT NOT NULL,
+  PRIMARY KEY (PrivId)
+);
+
+CREATE TABLE IF NOT EXISTS User (
+	Email VARCHAR(50) NOT NULL,
+	Password VARCHAR(25) NOT NULL,
+	PrivId NOT NULL,
+	Picture VARCHAR(100),
+	Fname VARCHAR(25),
+	Lname VARCHAR(25),
+	PRIMARY KEY(Email),
+  FOREIGN KEY (PrivId) REFERENCES Privilege(PrivId)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Friend (
+	EmailFirst VARCHAR(50) NOT NULL,
+	EmailSecond VARCHAR(50) NOT NULL,
+  PRIMARY KEY (EmailFirst, EmailSecond),
+  FOREIGN KEY (EmailFirst) REFERENCES User(Email)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  FOREIGN KEY (EmailSecond) REFERENCES User(Email)
+  ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+/** Views **/
+CREATE VIEW IF NOT EXISTS BookView AS
+  SELECT *, NumCopies AS NumAvailable
+  FROM Book
+  WHERE BookId NOT IN
+    (SELECT BookId
+    FROM Book NATURAL JOIN Loan
+    WHERE EndDate > DATE('now'))
+  UNION
+  SELECT Book.*, (NumCopies-COUNT(*)) as NumAvailable
+  FROM Book NATURAL JOIN Loan
+  WHERE EndDate > DATE('now')
+  GROUP BY Book.BookId;
+
+/** Triggers **/
+  /* We need a trigger that checks daily for when loan are up */
+  /* Same trigger needs to then check if someone else is in queue for book (has hold) and grant earliest hold the right */
+  /* Triggers to block hold creations if book is already on hold to user */
+
+/** Insert test data **/
+
+/* Genre Enum */
+INSERT INTO Genre VALUES (0, "Fiction");
+INSERT INTO Genre Values (1, "Non-fiction");
+INSERT INTO Genre VALUES (2, "Drama");
+INSERT INTO Genre VALUES (3, "Adventure");
+INSERT INTO Genre VALUES (4, "Romance");
+INSERT INTO Genre VALUES (5, "Mystery");
+INSERT INTO Genre VALUES (6, "Horror");
+INSERT INTO Genre VALUES (7, "Fantasy");
+INSERT INTO Genre VALUES (8, "Religion");
+INSERT INTO Genre VALUES (9, "Science Fiction");
+INSERT INTO Genre VALUES (10, "Self Help");
+INSERT INTO Genre VALUES (11, "Reference");
+
+/* Privilege Enum */
+INSERT INTO Privilege VALUES (0, "User");
+INSERT INTO Privilege VALUES (1,, "Administrator");
+
+/* 10 Books and related authors, genres */
+  /* Can you make one The Odds of Loving Grover Cleveland, Sharp Things, and Life and Death (Twilight gender swap) */
+
+/* Accounts */
+  /* 4 user accounts (3 students, 1 admin) */
+
+/* Friendships */
+  /* Create one friendship between 2 students */
+
+/* Reviews */
+  /* Add reviews for 3 books for each user (different books preferably) */
+
+/* Holds / Loans */
+  /* Add two expired loans for each user for two of the books reviewed (2 week duration) */
+  /* Add expired holds for each user for two of the books reviewed (expire when loan started) */
+  /* Add holds for each user that has reviews for the book the other one has on loan
+    (with start date sometime after they receive lock)(also ensure these books only have one copy availabl
+    each) */
+  /* Add loans for the last book each user reviewed to expire when classes end this term (with start date 2 weeks before) */
