@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.19-3",
-    "name": "the-barbs"
+    "name": "the-barsb"
   },
   "apps": [
     {
@@ -18,7 +18,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.sass"
       ],
       "scripts": [],
       "environments": {
@@ -41,7 +41,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "sass",
     "prefixInterfaces": false,
     "inline": {
       "style": false,
