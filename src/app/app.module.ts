@@ -11,6 +11,7 @@ import { HoldScrollerComponent } from './components/hold-scroller/hold-scroller.
 import { FeedWidgetComponent } from './components/feed-widget/feed-widget.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ReaderComponent } from './pages/reader/reader.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FeedWidgetComponent,
     SearchBarComponent,
     SearchBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    ReaderComponent
   ],
   imports: [
     BrowserModule,
