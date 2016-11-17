@@ -12,6 +12,10 @@ import { FeedWidgetComponent } from './components/feed-widget/feed-widget.compon
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ReaderComponent } from './pages/reader/reader.component';
+import { LoginComponent } from './pages/login/login.component';
+
+import { BooksService } from "./services/books.service";
+import { UsersService } from "./services/users.service";
 
 @NgModule({
   declarations: [
@@ -25,14 +29,18 @@ import { ReaderComponent } from './pages/reader/reader.component';
     SearchBarComponent,
     SearchBarComponent,
     DashboardComponent,
-    ReaderComponent
+    ReaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    BooksService,
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
