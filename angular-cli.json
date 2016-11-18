@@ -18,10 +18,13 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "material-icon.css",
+        "../node_modules/material-design-lite/dist/material.deep_purple-purple.min.css"
       ],
       "scripts": [
-        "../node_modules/sql.js/js/sql.js"
+        "../node_modules/sql.js/js/sql.js",
+        "../node_modules/material-design-lite/dist/material.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

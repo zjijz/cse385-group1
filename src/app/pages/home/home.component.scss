@@ -1,0 +1,16 @@
+@import '../../../styles/_constants';
+
+.home-wrapper {
+  height: 100vh;
+
+  margin: 0;
+  padding: map-get($sizings, half);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: 1 1 auto;
+  }
+}
