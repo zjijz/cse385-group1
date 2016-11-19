@@ -3,6 +3,7 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
 ## Development server
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
@@ -29,3 +30,23 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## To-Do
+
+- [ ] User mode
+  - Instructions of how to use
+- [ ] Superuser mode
+  - Instructions of how to use
+- [ ] Login page
+  - [ ] Form
+  - [ ] Wired to backend
+- [ ] Home page
+  - [ ] Loan scroller
+  - [ ] Hold scroller
+  - [ ] Search bar
+  - [ ] Feed widget (most recent review)
+- [ ] Dashboard
+  - [ ] Show the user information on a card
+- [ ] Feed
+  - [ ] Show all reviews from friends in simple scroll
+  - [ ] Superuser shows all reviews with ability to delete

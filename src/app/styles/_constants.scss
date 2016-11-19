@@ -37,7 +37,7 @@ $colors: (
 
   &__bg {
     background-color: map-get($colors, primary) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
   }
 }
 
@@ -48,7 +48,7 @@ $colors: (
 
   &__bg {
     background-color: map-get($colors, secondary) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
   }
 }
 
@@ -59,7 +59,7 @@ $colors: (
 
   &__bg {
     background-color: map-get($colors, error) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
   }
 }
 
@@ -70,7 +70,7 @@ $colors: (
 
   &__bg {
     background-color: map-get($colors, valid) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
   }
 }
 
@@ -81,6 +81,6 @@ $colors: (
 
   &__bg {
     background-color: map-get($colors, valid) !important;
-    color: rgba(0, 0, 0, 0.85) !important;
+    color: rgba(0, 0, 0, 0.7) !important;
   }
 }

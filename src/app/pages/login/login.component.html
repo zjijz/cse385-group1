@@ -1,8 +1,13 @@
 <div class="login">
-  <material-card hasTitle="true" hasActions="true" titleBorder="true" actionsborder="true">
-    <p title class="">Login</p>
+  <material-card hasTitle="true" hasActions="true" hasText="true" titleBorder="true" textBorder="true"
+                 actionsBorder="true">
+    <p title class="title">Login to Barbs Library!</p>
+    <div class="inputs" text>
+      <material-input [idName]="email" label="Email" [(ngModel)]="email"></material-input>
+      <material-input [idName]="password" label="Password" type="password" [(ngModel)]="password"></material-input>
+    </div>
     <div actions>
-      <p>Hey</p>
+      <button mdl class="mdl-button mdl-js-button mdl-button--primary" (click)="login()">Login</button>
     </div>
   </material-card>
 </div>

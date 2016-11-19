@@ -14,15 +14,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { BookPreviewComponent } from './pages/book-preview/book-preview.component';
 
 // Components
-import { LoanScrollerComponent } from './components/loan-scroller/loan-scroller.component';
-import { HoldScrollerComponent } from './components/hold-scroller/hold-scroller.component';
 import { FeedWidgetComponent } from './components/feed-widget/feed-widget.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MaterialCard } from './components/material-card/material-card.component';
+import { MaterialInput } from './components/material-input/material-input.component';
+import { BookScrollerComponent } from './components/book-scroller/book-scroller.component';
+
+// Directives
+import { MdlDirective } from './directives/mdl.directive';
 
 import { BooksService } from "./services/books.service";
 import { UsersService } from "./services/users.service";
-import { MdlDirective } from './directives/mdl.directive';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -42,12 +44,12 @@ const routes: Routes = [
     DashboardComponent,
     ReaderComponent,
     LoginComponent,
+    BookScrollerComponent,
     BookPreviewComponent,
-    LoanScrollerComponent,
-    HoldScrollerComponent,
     FeedWidgetComponent,
     SearchBarComponent,
-    MaterialCard
+    MaterialCard,
+    MaterialInput
   ],
   imports: [
     BrowserModule,

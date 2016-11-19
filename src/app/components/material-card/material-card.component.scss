@@ -5,6 +5,14 @@
   min-height: 0;
 
   > * {
+    width: 100%;
+
     padding: map-get($sizings, double) map-get($sizings, quadruple);
+
+    box-sizing: border-box;
+  }
+
+  .mdl-card__actions {
+    padding: map-get($sizings, normal) map-get($sizings, double);
   }
 }

@@ -1,18 +1,29 @@
-import { Component, Input, OnChanges, Provider, forwardRef } from '@angular/core';
+import { Component, Input, OnChanges, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { MdlDirective } from '../../directives/mdl.directive';
-import { ColorState } from '../../components/material-states/color.states';
+import { ColorState } from '../material-states/color.states';
 
-const MATERIAL_INPUT_ACCESSOR = new Provider(
-    NG_VALUE_ACCESSOR, {useExisting: forwardRef(() => MaterialInput), multi: true});
+/*const MATERIAL_INPUT_ACCESSOR = new Provider(
+    NG_VALUE_ACCESSOR, {useExisting: forwardRef(() => MaterialInput), multi: true});*/
+
+/*const MATERIAL_INPUT_ACCESSOR = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => MaterialInput),
+  multi: true
+};*/
 
 @Component({
     selector: 'material-input',
     templateUrl: './material-input.component.html',
     styleUrls: ['./material-input.component.scss'],
-    providers: [MATERIAL_INPUT_ACCESSOR],
-    directives: [MdlDirective]
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => MaterialInput),
+        multi: true
+      }
+    ]
 })
 export class MaterialInput implements ControlValueAccessor, OnChanges {
     @Input()
