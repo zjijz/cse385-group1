@@ -1,0 +1,14 @@
+<div mdl class="material-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title" [class.mdl-card--border]="titleBorder" *ngIf="hasTitle">
+    <ng-content select="[title]"></ng-content>
+  </div>
+  <div class="mdl-card__media" [class.mdl-card--border]="mediaBorder" *ngIf="hasMedia">
+    <ng-content select="[media]"></ng-content>
+  </div>
+  <div class="mdl-card__supporting-text" [class.mdl-card--border]="textBorder" *ngIf="hasText">
+    <ng-content select="[text]"></ng-content>
+  </div>
+  <div class="mdl-card__actions" [class.mdl-card--border]="actionsBorder" *ngIf="hasActions">
+    <ng-content select="[actions]"></ng-content>
+  </div>
+</div>

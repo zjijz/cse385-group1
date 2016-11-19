@@ -1,0 +1,7 @@
+<div class="material-input__textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label" mdl
+     [class.primary]="isPrimary" [class.accent]="isAccent" [class.error]="isError" [class.valid]="isValid"
+     [class.grey]="disabled">
+  <input class="mdl-textfield__input" [attr.id]="idName" [attr.type]="type" [attr.value]="value" [disabled]="disabled"
+         [(ngModel)]="value">
+  <label class="mdl-textfield__label" [attr.for]="idName">{{label}}</label>
+</div>

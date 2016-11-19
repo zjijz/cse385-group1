@@ -1,0 +1,10 @@
+@import '../../styles/_constants';
+
+.material-card {
+  width: 100%;
+  min-height: 0;
+
+  > * {
+    padding: map-get($sizings, double) map-get($sizings, quadruple);
+  }
+}

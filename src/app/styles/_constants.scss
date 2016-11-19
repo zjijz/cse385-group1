@@ -1,0 +1,86 @@
+$tablet-width: 480px;
+$desktop-width: 1025px;
+
+$sizings: (
+  quarter: 2.5px,
+  half: 5px,
+  normal: 10px,
+  double: 20px,
+  quadruple: 40px
+);
+
+$colors: (
+  primary: rgb(103,58,183),
+  secondary: rgb(224, 64, 251),
+  background: rgba(0, 0, 0, 0.075),
+  error: rgb(255, 82, 82),
+  grey: rgba(0, 0, 0, 0.55),
+  valid: rgb(76, 175, 80)
+);
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+.color--primary {
+  &__fg {
+    color: map-get($colors, primary) !important;
+  }
+
+  &__bg {
+    background-color: map-get($colors, primary) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+.color--accent {
+  &__fg {
+    color: map-get($colors, secondary) !important;
+  }
+
+  &__bg {
+    background-color: map-get($colors, secondary) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+.color--error {
+  &__fg {
+    color: map-get($colors, error) !important;
+  }
+
+  &__bg {
+    background-color: map-get($colors, error) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+.color--valid {
+  &__fg {
+    color: map-get($colors, valid) !important;
+  }
+
+  &__bg {
+    background-color: map-get($colors, valid) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+.color__grey {
+  &__fg {
+    color: map-get($colors, grey) !important;
+  }
+
+  &__bg {
+    background-color: map-get($colors, valid) !important;
+    color: rgba(0, 0, 0, 0.85) !important;
+  }
+}

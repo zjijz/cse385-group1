@@ -1,0 +1,22 @@
+@import '../../styles/_constants';
+
+.login {
+  width: 100%;
+  height: 100%;
+
+  padding: map-get($sizings, double);
+
+  background-color: map-get($colors, background);
+
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+
+  material-card {
+    min-width: 75%;
+
+    p {
+      margin: 0;
+    }
+  }
+}

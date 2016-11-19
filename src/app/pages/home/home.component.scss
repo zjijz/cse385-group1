@@ -1,7 +1,7 @@
-@import '../../../styles/_constants';
+@import '../../styles/_constants';
 
 .home-wrapper {
-  height: 100vh;
+  height: 100%;
 
   margin: 0;
   padding: map-get($sizings, half);

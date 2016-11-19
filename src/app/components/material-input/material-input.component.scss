@@ -1,0 +1,57 @@
+@import '../../styles/_constants';
+
+.material-input__textfield {
+  width: 100% !important;
+
+  &.is-focused, &.is-dirty {
+    &.primary {
+      label {
+        @extend .color--primary__fg;
+
+        &:after {
+          @extend .color--primary__bg;
+        }
+      }
+    }
+
+    &.accent {
+      label {
+        @extend .color--accent__fg;
+
+        &:after {
+          @extend .color--accent__bg;
+        }
+      }
+    }
+
+    &.error {
+      label {
+        @extend .color--error__fg;
+
+        &:after {
+          @extend .color--error__bg;
+        }
+      }
+    }
+
+    &.valid {
+      label {
+        @extend .color--valid__fg;
+
+        &:after {
+          @extend .color--valid__bg;
+        }
+      }
+    }
+
+    &.grey {
+      label {
+        @extend .color__grey__fg;
+
+        &:after {
+          @extend .color__grey__bg;
+        }
+      }
+    }
+  }
+}
