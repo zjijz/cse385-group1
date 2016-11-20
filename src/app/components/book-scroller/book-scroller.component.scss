@@ -1,0 +1,16 @@
+@import '../../styles/_constants';
+
+.books-wrapper {
+  display: flex;
+
+  overflow-y: scroll;
+
+  .book {
+    padding: 0 map-get($sizings, normal);
+
+    img {
+      width: auto;
+      height: 200px;
+    }
+  }
+}

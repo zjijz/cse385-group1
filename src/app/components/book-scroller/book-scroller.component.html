@@ -1,3 +1,5 @@
-<p>
-  book-scroller works!
-</p>
+<div class="books-wrapper">
+  <div class="book" *ngFor="let book of books">
+    <img [src]="'assets/covers/' + book._id + '.png'" [alt]="book.title + ' Cover'">
+  </div>
+</div>

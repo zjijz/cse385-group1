@@ -32,13 +32,12 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## To-Do
-
 - [ ] User mode
   - Instructions of how to use
 - [ ] Superuser mode
   - Instructions of how to use
 - [ ] Login page
-  - [ ] Form
+  - [x] Form
   - [ ] Wired to backend
 - [ ] Home page
   - [ ] Loan scroller

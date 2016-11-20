@@ -1,6 +1,5 @@
 <div class="home-wrapper">
-  <app-search-bar></app-search-bar>
-  <app-book-scroller></app-book-scroller>
-  <app-book-scroller></app-book-scroller>
-  <app-feed-widget></app-feed-widget>
+  <app-search-bar id="searchbar"></app-search-bar>
+  <app-book-scroller [books]="loans"></app-book-scroller>
+  <app-book-scroller [books]="holds"></app-book-scroller>
 </div>

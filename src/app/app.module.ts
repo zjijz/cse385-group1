@@ -14,7 +14,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { BookPreviewComponent } from './pages/book-preview/book-preview.component';
 
 // Components
-import { FeedWidgetComponent } from './components/feed-widget/feed-widget.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MaterialCard } from './components/material-card/material-card.component';
 import { MaterialInput } from './components/material-input/material-input.component';
@@ -46,7 +45,6 @@ const routes: Routes = [
     LoginComponent,
     BookScrollerComponent,
     BookPreviewComponent,
-    FeedWidgetComponent,
     SearchBarComponent,
     MaterialCard,
     MaterialInput

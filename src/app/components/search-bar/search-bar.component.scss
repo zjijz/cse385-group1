@@ -1,0 +1,26 @@
+@import '../../styles/_constants';
+
+.search {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    font-size: 24px;
+    line-height: 43px;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    outline: thin solid red;
+  }
+
+  .mdl-card__actions {
+    padding: 0 !important;
+  }
+}

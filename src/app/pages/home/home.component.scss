@@ -3,6 +3,8 @@
 .home-wrapper {
   height: 100%;
 
+  background-color: map-get($sizings, background);
+
   margin: 0;
   padding: map-get($sizings, half);
   box-sizing: border-box;
@@ -12,5 +14,11 @@
 
   > * {
     flex: 1 1 auto;
+  }
+
+  #searchbar {
+    height: 75px;
+
+    flex: 0 0 auto;
   }
 }
