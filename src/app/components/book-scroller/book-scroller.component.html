@@ -1,5 +1,10 @@
-<div class="books-wrapper">
-  <div class="book" *ngFor="let book of books">
-    <img [src]="'assets/covers/' + book._id + '.png'" [alt]="book.title + ' Cover'">
+<div class="scroller mdl-card mdl-shadow--4dp">
+  <div class="mdl-card-title">{{title}}</div>
+  <div class="mdl-card__supporting-text">
+    <div class="books-wrapper">
+      <a [routerLink]="'/preview/' + book._id" *ngFor="let book of books; let i = index">
+        <img [src]="'assets/covers/' + book._id + '.png'" [alt]="book.title + ' Cover'">
+      </a>
+    </div>
   </div>
 </div>

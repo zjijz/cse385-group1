@@ -1,16 +1,54 @@
 @import '../../styles/_constants';
 
-.books-wrapper {
-  display: flex;
+.scroller {
+  flex: 1 1 auto;
 
-  overflow-y: scroll;
+  .mdl-card-title {
+    opacity: 0.7;
 
-  .book {
-    padding: 0 map-get($sizings, normal);
+    padding: map-get($sizings, normal) map-get($sizings, normal) map-get($sizings, half) map-get($sizings, normal);
 
-    img {
-      width: auto;
-      height: 200px;
+    @include desktop {
+      padding: map-get($sizings, double) map-get($sizings, double) map-get($sizings, normal) map-get($sizings, double);
+    }
+  }
+
+  .mdl-card__supporting-text {
+    width: 100%;
+    height: 100%;
+
+    padding: map-get($sizings, half) map-get($sizings, normal) map-get($sizings, normal) map-get($sizings, normal);
+
+    box-sizing: border-box;
+
+    @include desktop {
+      padding: map-get($sizings, normal) map-get($sizings, double) map-get($sizings, double) map-get($sizings, double);
+    }
+
+    .books-wrapper {
+      height: 100%;
+
+      display: flex;
+
+      background-color: white;
+      overflow-y: scroll;
+
+      a {
+        max-width: 115px;
+        height: 100%;
+
+        flex: 0;
+        display: inline-block;
+
+        img {
+          height: 100%;
+
+          margin: 0;
+          padding: 0 map-get($sizings, normal) 0 0;
+
+          display: block;
+        }
+      }
     }
   }
 }

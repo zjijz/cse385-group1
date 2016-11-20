@@ -3,7 +3,7 @@
 .home-wrapper {
   height: 100%;
 
-  background-color: map-get($sizings, background);
+  background-color: map-get($colors, background);
 
   margin: 0;
   padding: map-get($sizings, half);
@@ -14,11 +14,20 @@
 
   > * {
     flex: 1 1 auto;
+    display: flex;
   }
 
   #searchbar {
     height: 75px;
 
     flex: 0 0 auto;
+  }
+
+  #loans, #holds {
+    padding: map-get($sizings, half) map-get($sizings, normal);
+
+    @include desktop {
+      padding: map-get($sizings, normal) map-get($sizings, double);
+    }
   }
 }

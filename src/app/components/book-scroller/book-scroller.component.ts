@@ -10,6 +10,9 @@ import { Book } from 'api/models';
 export class BookScrollerComponent implements OnInit {
 
   @Input()
+  private title: String = '';
+
+  @Input()
   private books: Book[];
 
   constructor() { }

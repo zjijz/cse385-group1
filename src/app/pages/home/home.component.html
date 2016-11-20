@@ -1,5 +1,5 @@
 <div class="home-wrapper">
   <app-search-bar id="searchbar"></app-search-bar>
-  <app-book-scroller [books]="loans"></app-book-scroller>
-  <app-book-scroller [books]="holds"></app-book-scroller>
+  <app-book-scroller id="loans" [books]="loans" title="Loans"></app-book-scroller>
+  <app-book-scroller id="holds" [books]="holds" title="Holds"></app-book-scroller>
 </div>

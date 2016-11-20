@@ -11,4 +11,6 @@ export class BooksService {
 
   // Get user holds
 
+  // Fuzzy search (search LIKE in title, author, publisher, date and merge them)
+
 }

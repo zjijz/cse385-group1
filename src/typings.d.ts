@@ -18,6 +18,8 @@ declare module 'api/models' {
     num_available?: number;
     authors: Author[];
     genres: BookGenre[];
+    start_date?: number;
+    end_date?: number;
   }
 
   interface Author {
@@ -30,18 +32,6 @@ declare module 'api/models' {
     name?: string;
   }
 
-  interface Hold {
-    book?: Book;
-    start_date?: number;
-    end_date?: number;
-  }
-
-  interface Loan {
-    book?: Book;
-    start_date?: number;
-    end_date?: number;
-  }
-
   interface Review {
     book?: Book;
     rating?: number;
@@ -49,8 +39,8 @@ declare module 'api/models' {
   }
 
   interface User {
-    holds?: Hold[];
-    loans?: Loan[];
+    holds?: Book[];
+    loans?: Book[];
     email?: string;
     privilege?: number;
     picture?: string;
