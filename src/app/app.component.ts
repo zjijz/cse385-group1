@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router'
+import { UsersService } from "./services/users.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   private atLogin: boolean = true;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _us: UsersService) {
     this._router.events.subscribe((val: Event) => {
       if (val instanceof NavigationEnd) {
         console.log(val);
@@ -21,5 +22,7 @@ export class AppComponent {
 
   onLogout() {
     console.log('Logout...');
+
+    this._us.logout();
   }
 }

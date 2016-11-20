@@ -14,6 +14,9 @@ export class UsersService {
   }
 
   // Validate login / get user info
+  public login(email: string, password: string) {
+    this._router.navigateByUrl('/home');
+  }
 
   // Get reviews for all friends a user has
 

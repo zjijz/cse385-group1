@@ -50,6 +50,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Show the user information on a card
   - [ ] Wire to backend
 - [ ] Feed
-  - [ ] Show all reviews from friends in simple scroll
+  - [x] Show all reviews from friends in simple scroll
+  - [ ] Add ability to delete posts
   - [ ] Superuser shows all reviews with ability to delete
   - [ ] Wire to backend
