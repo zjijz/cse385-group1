@@ -1,3 +1,28 @@
-<p>
-  dashboard works!
-</p>
+<div class="dashboard">
+  <div class="dashboard-wrapper">
+    <material-card [hasTitle]="true" [hasText]="true" [hasActions]="true" [titleBorder]="true" [actionsBorder]="true">
+      <div title>
+        <p>Profile Information</p>
+      </div>
+      <div text>
+        <div class="row">
+          <material-input idName="fname" label="First Name" [(ngModel)]="fname" (input)="isEdited = true"></material-input>
+          <material-input idName="lname" label="Last Name" [(ngModel)]="lname" (input)="isEdited = true"></material-input>
+        </div>
+        <material-input idName="email" label="Email" [(ngModel)]="email" disabled></material-input>
+        <material-input idName="numFriends" label="Total Friends" [(ngModel)]="numFriends" disabled></material-input>
+        <div class="row">
+          <material-input idName="numLoans" label="Total Loans" [(ngModel)]="numLoans" disabled></material-input>
+          <material-input idName="currLoans" label="Current Loans" [(ngModel)]="currLoans" disabled></material-input>
+        </div>
+        <div class="row">
+          <material-input idName="numHolds" label="Total Holds" [(ngModel)]="numHolds" disabled></material-input>
+          <material-input idName="currHolds" label="Current Holds" [(ngModel)]="currHolds" disabled></material-input>
+        </div>
+      </div>
+      <div actions>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary" [disabled]="!isEdited" (click)="return;">Save</button>
+      </div>
+    </material-card>
+  </div>
+</div>

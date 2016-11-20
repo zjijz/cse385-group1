@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from 'api/models';
 
@@ -7,13 +8,18 @@ export class UsersService {
 
   public user: User;
 
-  constructor() {
+  constructor(private _router: Router) {
     this.user = <User> { email: null, privilege: null, picture: null, first_name: null, last_name: null,
                     friends: [], loans: [], holds: [] };
   }
 
-  // Validate login
+  // Validate login / get user info
 
-  // Get user info
+  // Get reviews for all friends a user has
 
+  // Get all reviews on DB (for superuser)
+
+  public logout() {
+    this._router.navigateByUrl('/');
+  }
 }

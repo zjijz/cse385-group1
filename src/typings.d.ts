@@ -18,8 +18,8 @@ declare module 'api/models' {
     num_available?: number;
     authors: Author[];
     genres: BookGenre[];
-    start_date?: number;
-    end_date?: number;
+    start_date?: number; // for loans / holds
+    end_date?: number; // for loans / holds
   }
 
   interface Author {
@@ -41,11 +41,14 @@ declare module 'api/models' {
   interface User {
     holds?: Book[];
     loans?: Book[];
+    friends: User[];
     email?: string;
     privilege?: number;
     picture?: string;
     first_name?: string;
     last_name?: string;
-    friends: User[];
+    totalLoans?: number;
+    totalHolds?: number;
+    allTitles?: string[];
   }
 }

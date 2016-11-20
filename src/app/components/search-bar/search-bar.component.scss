@@ -1,26 +1,28 @@
 @import '../../styles/_constants';
 
-.search {
+.search-bar {
   width: 100%;
+  max-width: 750px;
+  min-height: 0;
   height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  input {
-    font-size: 24px;
-    line-height: 43px;
-
-    margin: 0;
-    padding: 0;
-  }
-
-  * {
-    outline: thin solid red;
-  }
+  flex: 1 1 auto;
 
   .mdl-card__actions {
-    padding: 0 !important;
+    padding: 0 map-get($sizings, normal);
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+
+    .mdl-textfield {
+      flex: 1 1 auto;
+    }
+
+    i {
+      flex: 0;
+
+      cursor: pointer;
+    }
   }
 }

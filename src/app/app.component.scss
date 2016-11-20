@@ -1,5 +1,9 @@
 @import 'styles/_constants.scss';
 
+.mdl-navigation__link.active {
+  opacity: 1;
+}
+
 main {
   height: calc(100vh - 56px);
 

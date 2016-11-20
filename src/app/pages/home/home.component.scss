@@ -1,33 +1,39 @@
 @import '../../styles/_constants';
 
-.home-wrapper {
+.home {
+  @extend .page;
+
   height: 100%;
 
-  background-color: map-get($colors, background);
+  .home-wrapper {
+    width: 100%;
+    max-width: $column-size;
+    height: 100%;
 
-  margin: 0;
-  padding: map-get($sizings, half);
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-
-  > * {
-    flex: 1 1 auto;
     display: flex;
-  }
+    flex-direction: column;
 
-  #searchbar {
-    height: 75px;
+    > * {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
 
-    flex: 0 0 auto;
-  }
+      padding: map-get($sizings, half) 0;
 
-  #loans, #holds {
-    padding: map-get($sizings, half) map-get($sizings, normal);
+      @include desktop {
+        padding: map-get($sizings, normal) 0;
+      }
 
-    @include desktop {
-      padding: map-get($sizings, normal) map-get($sizings, double);
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    #searchbar {
+      height: 75px;
+
+      flex: 0 0 auto;
     }
   }
 }

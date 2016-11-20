@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  private email: string;
+  private picture: string;
+  private fname: string;
+  private lname: string;
+  private numFriends: number;
+  private numLoans: number;
+  private numHolds: number;
+
+  private isEdited: boolean = false;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

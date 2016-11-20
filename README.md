@@ -40,12 +40,16 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Form
   - [ ] Wired to backend
 - [ ] Home page
-  - [ ] Loan scroller
-  - [ ] Hold scroller
-  - [ ] Search bar
-  - [ ] Feed widget (most recent review)
+  - [x] Loan scroller
+  - [x] Hold scroller
+  - [x] Search bar
+  - [ ] Wire to backend
+- [ ] Book Preview
+  - [ ] Run queries to get if book is on user's hold or loan lists
 - [ ] Dashboard
-  - [ ] Show the user information on a card
+  - [x] Show the user information on a card
+  - [ ] Wire to backend
 - [ ] Feed
   - [ ] Show all reviews from friends in simple scroll
   - [ ] Superuser shows all reviews with ability to delete
+  - [ ] Wire to backend

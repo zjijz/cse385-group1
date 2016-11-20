@@ -13,4 +13,8 @@ export class BooksService {
 
   // Fuzzy search (search LIKE in title, author, publisher, date and merge them)
 
+  // Get hold info by BookId
+
+  // Get loan info by BookId
+
 }
