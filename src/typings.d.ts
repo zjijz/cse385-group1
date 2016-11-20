@@ -16,8 +16,8 @@ declare module 'api/models' {
     cover?: string; // relative path to book cover img
     num_copies?: number;
     num_available?: number;
-    authors: Author[];
-    genres: BookGenre[];
+    authors?: Author[];
+    genres?: BookGenre[];
     start_date?: number; // for loans / holds
     end_date?: number; // for loans / holds
   }
@@ -36,12 +36,12 @@ declare module 'api/models' {
     book?: Book;
     rating?: number;
     words?: string;
+    user?: User;
   }
 
   interface User {
     holds?: Book[];
     loans?: Book[];
-    friends: User[];
     email?: string;
     privilege?: number;
     picture?: string;

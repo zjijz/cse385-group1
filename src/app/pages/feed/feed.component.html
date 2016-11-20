@@ -1,3 +1,50 @@
-<p>
-  feed works!
-</p>
+<div mdl class="feed">
+  <div class="feed-wrapper">
+    <button class="add-new mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"
+            (click)="showNew = true">
+      <i class="material-icons">add</i>
+    </button>
+
+    <div class="review-creator review" *ngIf="showNew">
+      <material-card [hasTitle]="true" [hasText]="true" [hasActions]="true" [titleBorder]="true" [actionsBorder]="true">
+        <div class="title" title>
+          <p class="title-bar">Review for: </p>
+          <select>
+            <option value="opt.book_id" *ngFor="let opt of availReview">{{opt.book_title}}</option>
+          </select>
+        </div>
+        <div class="review-area" text>
+          <div mdl class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows= "2" id="reviewarea" (input)="isEdited = true"></textarea>
+            <label class="mdl-textfield__label" for="reviewarea">Write review...</label>
+          </div>
+        </div>
+        <div actions>
+          <button mdl class="mdl-button mdl-js-button mdl-button--primary" [disabled]="!isEdited"
+                  (click)="return;">Submit</button>
+          <button mdl class="mdl-button mdl-js-button mdl-button--primary"
+                  (click)="showNew = false; isEdited = false">Cancel</button>
+        </div>
+      </material-card>
+    </div>
+
+    <div class="review" *ngFor="let review of reviews">
+      <material-card [hasTitle]="true" [hasText]="true" [titleBorder]="true">
+        <div class="title" title>
+          <p class="title-bar">
+            <span class="name">{{review.user.first_name + ' ' + review.user.last_name}}</span>
+            <span class="book-title">{{review.book.title}}</span>
+            <span>
+              <i class="material-icons" *ngFor="let i of getRatingArr(review)">favorite</i>
+            </span>
+          </p>
+        </div>
+        <div text>
+          <p class="words">
+            <span>{{review.words}}</span>
+          </p>
+        </div>
+      </material-card>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,12 @@ $colors: (
   valid: rgb(76, 175, 80)
 );
 
+@mixin fullwidth {
+  @media (min-width: #{$column-size}) {
+    @content
+  }
+}
+
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;

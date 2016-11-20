@@ -1,0 +1,111 @@
+@import '../../styles/_constants';
+
+$fab-size: 56px;
+
+.feed {
+  @extend .page;
+
+  .feed-wrapper {
+    width: 100%;
+    max-width: $column-size;
+
+    .add-new {
+      position: fixed;
+
+      right: map-get($sizings, normal);
+      bottom: map-get($sizings, normal);
+
+      z-index: 2000;
+
+      @include fullwidth {
+        right: calc((100vw - 750px) / 2);
+      }
+    }
+
+    .review {
+      padding-bottom: map-get($sizings, normal);
+
+      @include desktop {
+        padding-bottom: map-get($sizings, double);
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .title {
+        width: 100%;
+
+        p.title-bar {
+          width: 100%;
+
+          text-align: center;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          @include tablet {
+            flex-direction: row;
+          }
+
+          @include desktop {
+            flex-direction: row;
+          }
+
+          span.name, span.book-title {
+            font-size: 18px;
+            opacity: 0.7;
+
+            padding-bottom: map-get($sizings, half);
+
+            @include desktop {
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+
+      p.review {
+        font-size: 14px;
+      }
+    }
+
+    .review-creator {
+      .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include tablet {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+
+        @include desktop {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+
+        > * {
+          vertical-align: middle;
+
+          padding-bottom: map-get($sizings, half);
+        }
+
+        p.title-bar {
+          width: 80px;
+        }
+      }
+
+      .review-area {
+        width: 100%;
+
+        > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
