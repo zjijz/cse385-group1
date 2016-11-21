@@ -398,7 +398,6 @@ INSERT INTO Hold VALUES(6, "derekshepherd@seattlegrace.com", '2016-09-18', '2016
 
   /* Add loans for the last book each user reviewed to expire when classes end this term (with start date 2 weeks before) */
 
-INSERT INTO Loan VALUES(5, "johndoe@email.com", '2016-12-02', '2016-012-16');
+INSERT INTO Loan VALUES(5, "johndoe@email.com", '2016-12-02', '2016-12-16');
 INSERT INTO Loan VALUES(2, "meredithgrey@seattlegrace.com", '2016-11-28', '2016-12-12');
 INSERT INTO Loan VALUES(8, "derekshepherd@seattlegrace.com", '2016-11-16', '2016-11-30');
-
