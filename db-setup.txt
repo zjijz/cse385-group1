@@ -221,7 +221,10 @@ INSERT INTO Book VALUES (
   "Reprint Edition",
   "Wordsworth Editions Ltd",
   '1997-08-05', "A priceless Indian diamond which had been brought to England as spoils of war, is given to Rachel Verrinder on her eighteenth birthday.",
-"assets/books/moonstone.txt", "assets/covers/moonstone.jpg", 1);
+  "assets/books/moonstone.txt",
+  "assets/covers/moonstone.jpg",
+  1
+);
 
 INSERT INTO Book VALUES (
   5,
@@ -231,7 +234,10 @@ INSERT INTO Book VALUES (
   "CreateSpace Independent",
   '2011-07-12',
   "Kafka's masterpiece and best-known work, The Trial tells the story of a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime not revealed to him or to the reader.",
-"assets/books/trial.txt", "assets/covers/trial.jpg", 6);
+  "assets/books/trial.txt",
+  "assets/covers/trial.jpg",
+  6
+);
 
 INSERT INTO Book VALUES (
   6,
