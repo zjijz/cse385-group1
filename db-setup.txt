@@ -171,7 +171,7 @@ INSERT INTO Book VALUES (
   '1915-01-01',
   "It is a time when the major world powers are vying for colonial honors, a time of ju-ju, witch doctors, and an uneasy peace with Bosambo, impressive chief of the Ochori. ",
   "assets/books/0.txt",
-  "assets/covers/0.png”,
+  "assets/covers/0.png",
   5
 );
 
@@ -210,7 +210,7 @@ INSERT INTO Book VALUES (
   '2000-04-18',
   "During a business visit to Count Dracula's castle in Transylvania, a young English solicitor finds himself at the center of a series of horrifying incidents.",
   "assets/books/3.txt",
-  "assets/covers/3.png”,
+  "assets/covers/3.png",
   1
 );
 
@@ -222,7 +222,7 @@ INSERT INTO Book VALUES (
   "Wordsworth Editions Ltd",
   '1997-08-05', "A priceless Indian diamond which had been brought to England as spoils of war, is given to Rachel Verrinder on her eighteenth birthday.",
   "assets/books/4.txt",
-  "assets/covers/4.png”,
+  "assets/covers/4.png",
   1
 );
 
@@ -235,7 +235,7 @@ INSERT INTO Book VALUES (
   '2011-07-12',
   "Kafka's masterpiece and best-known work, The Trial tells the story of a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime not revealed to him or to the reader.",
   "assets/books/5.txt",
-  "assets/covers/5.png”,
+  "assets/covers/5.png",
   6
 );
 
@@ -268,7 +268,8 @@ INSERT INTO Book VALUES (
 INSERT INTO Book VALUES (
   8,
   "1406845892",
-  "Bacon", NULL,
+  "Bacon", 
+  NULL,
   "Echo Library",
   '2007-08-28',
   "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. ",
