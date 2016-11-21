@@ -46,12 +46,13 @@ CREATE TABLE IF NOT EXISTS BookGenre (
 	ON UPDATE CASCADE
 );
 
+/* Not 2NF (EndDate only on StartDate) */
 CREATE TABLE IF NOT EXISTS Hold (
  	BookId INT NOT NULL,
  	Email VARCHAR(50) NOT NULL,
   StartDate DATE NOT NULL,
  	EndDate DATE NOT NULL,
- 	PRIMARY KEY (BookId, Email),
+ 	PRIMARY KEY (BookId, Email, StartDate),
   FOREIGN KEY (BookId) REFERENCES Book(BookId)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE,
@@ -60,12 +61,13 @@ CREATE TABLE IF NOT EXISTS Hold (
 	ON UPDATE CASCADE
 );
 
+/* Not 2NF (EndDate only on StartDate) */
 CREATE TABLE IF NOT EXISTS Loan (
  	BookId INT NOT NULL,
   Email VARCHAR(50) NOT NULL,
  	StartDate DATE NOT NULL,
  	EndDate DATE NOT NULL,
- 	PRIMARY KEY (BookId, Email),
+ 	PRIMARY KEY (BookId, Email, StartDate),
   FOREIGN KEY (BookId) REFERENCES Book(BookId)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE,
@@ -156,32 +158,131 @@ INSERT INTO Genre VALUES (11, "Reference");
 
 /* Privilege Enum */
 INSERT INTO Privilege VALUES (0, "User");
-INSERT INTO Privilege VALUES (1, "Administrator")
+INSERT INTO Privilege VALUES (1, "Administrator");
 
 /* 10 Books and related authors, genres */
 
-INSERT INTO Book VALUES(0, "B00139V8LC", "Bones", NULL, NULL, '1915-01-01', "It is a time when the major world powers are vying for colonial honors, a time of ju-ju, witch doctors, and an uneasy peace with Bosambo, impressive chief of the Ochori. ", 
-"/src/assets/books/bones.txt", "/src/assets/covers/bones.jpg", 5);
-INSERT INTO Book VALUES(1, "B0087MI2CQ", "Only a Girl's Love", NULL, "Queensway Library", NULL, "Charles Garvice was a prolific British writer of over 150 romance novels, who also used the female pseudonym Caroline Hart", 
-"/src/assets/books/OnlyAGirlsLove.txt", "/src/assets/covers/onlyAGirlsLove.jpg", 2);
-INSERT INTO Book VALUES(2, "1606644734", "Hall of Mirrors", NULL, "Aegypan", '2011-05-01', "For an instant you think it is temporary blindness, this sudden dark that comes in the middle of a bright afternoon. It must be blindness, you think; could the sun that was tanning you have gone out instantaneously, leaving you in utter blackness? ", 
-"/src/assets/books/HallOfMirrors.txt", "/src/assets/covers/hallOfMirrors.jpg", 4);
-INSERT INTO Book VALUES(3, "0486454010", "Dracula", "1 edition", "Dover Publications", '2000-04-18', "During a business visit to Count Dracula's castle in Transylvania, a young English solicitor finds himself at the center of a series of horrifying incidents.", 
-"/src/assets/books/dracula.txt", "/src/assets/covers/dracula.jpg", 1);
-INSERT INTO Book VALUES(4, "1853260444", "The Moonstone", "Reprint Edition", "Wordsworth Editions Ltd", '1997-08-05', "A priceless Indian diamond which had been brought to England as spoils of war, is given to Rachel Verrinder on her eighteenth birthday.", 
-"/src/assets/books/moonstone.txt", "/src/assets/covers/moonstone.jpg", 1);
-INSERT INTO Book VALUES(5, "1466322748", "The Trial", "Tra Edition", "CreateSpace Independent", '2011-07-12', "Kafka's masterpiece and best-known work, The Trial tells the story of a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime not revealed to him or to the reader.", 
-"/src/assets/books/trial.txt", "/src/assets/covers/trial.jpg", 6);
-INSERT INTO Book VALUES(6, "0553213113", "Moby Dick", "59642nd edition", "Bantam Classics", '1981-03-01', "Mad Captain Ahab's quest for the White Whale is a timeless epic--a stirring tragedy of vengeance and obsession, a searing parable about humanity lost in a universe of moral ambiguity.", 
-"/src/assets/books/moby.txt", "/src/assets/covers/moby.jpg", 2);
-INSERT INTO Book VALUES(7, "1110489943", "Kepler", NULL, "BiblioLife", '2009-05-20', "This is a pre-1923 historical reproduction that was curated for quality. ", 
-"/src/assets/books/kepler.txt", "/src/assets/covers/kepler.jpg", 1);
-INSERT INTO Book VALUES(8, "1406845892", "Bacon", NULL, "Echo Library", '2007-08-28', "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. ", 
-"/src/assets/books/bacon.txt", "/src/assets/covers/kepler.jpg", 3);
-INSERT INTO Book VALUES(9, "0486264726", "The Call of the Wild", "1 Edition", "Dover Publications", '1990-07-01', "Jack London's novels and ruggedly individual life seemed to embody American hopes, frustrations, and romantic longings in the turbulent first years of the twentieth century.", 
-"/src/assets/books/callOfWild.txt", "/src/assets/covers/callOfTheWild
-.jpg", 8);
+INSERT INTO Book VALUES (
+  0,
+  "B00139V8LC",
+  "Bones",
+  NULL,
+  NULL,
+  '1915-01-01',
+  "It is a time when the major world powers are vying for colonial honors, a time of ju-ju, witch doctors, and an uneasy peace with Bosambo, impressive chief of the Ochori. ",
+  "assets/books/bones.txt",
+  "assets/covers/bones.jpg",
+  5
+);
 
+INSERT INTO Book VALUES (
+  1,
+  "B0087MI2CQ",
+  "Only a Girl's Love",
+  NULL,
+  "Queensway Library",
+  NULL,
+  "Charles Garvice was a prolific British writer of over 150 romance novels, who also used the female pseudonym Caroline Hart",
+  "assets/books/OnlyAGirlsLove.txt",
+  "assets/covers/onlyAGirlsLove.jpg",
+  2
+);
+
+INSERT INTO Book VALUES (
+  2,
+  "1606644734",
+  "Hall of Mirrors",
+  NULL,
+  "Aegypan",
+  '2011-05-01',
+  "For an instant you think it is temporary blindness, this sudden dark that comes in the middle of a bright afternoon. It must be blindness, you think; could the sun that was tanning you have gone out instantaneously, leaving you in utter blackness? ",
+  "assets/books/HallOfMirrors.txt",
+  "assets/covers/hallOfMirrors.jpg",
+  4
+);
+
+INSERT INTO Book VALUES (
+  3,
+  "0486454010",
+  "Dracula",
+  "1 edition",
+  "Dover Publications",
+  '2000-04-18',
+  "During a business visit to Count Dracula's castle in Transylvania, a young English solicitor finds himself at the center of a series of horrifying incidents.",
+  "assets/books/dracula.txt",
+  "assets/covers/dracula.jpg",
+  1
+);
+
+INSERT INTO Book VALUES (
+  4,
+  "1853260444",
+  "The Moonstone",
+  "Reprint Edition",
+  "Wordsworth Editions Ltd",
+  '1997-08-05', "A priceless Indian diamond which had been brought to England as spoils of war, is given to Rachel Verrinder on her eighteenth birthday.",
+"assets/books/moonstone.txt", "assets/covers/moonstone.jpg", 1);
+
+INSERT INTO Book VALUES (
+  5,
+  "1466322748",
+  "The Trial",
+  "Tra Edition",
+  "CreateSpace Independent",
+  '2011-07-12',
+  "Kafka's masterpiece and best-known work, The Trial tells the story of a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime not revealed to him or to the reader.",
+"assets/books/trial.txt", "assets/covers/trial.jpg", 6);
+
+INSERT INTO Book VALUES (
+  6,
+  "0553213113",
+  "Moby Dick",
+  "59642nd edition",
+  "Bantam Classics",
+  '1981-03-01',
+  "Mad Captain Ahab's quest for the White Whale is a timeless epic--a stirring tragedy of vengeance and obsession, a searing parable about humanity lost in a universe of moral ambiguity.",
+  "assets/books/moby.txt",
+  "assets/covers/moby.jpg",
+  2
+);
+
+INSERT INTO Book VALUES (
+  7,
+  "1110489943",
+  "Kepler",
+  NULL,
+  "BiblioLife",
+  '2009-05-20',
+  "This is a pre-1923 historical reproduction that was curated for quality.",
+  "assets/books/kepler.txt",
+  "assets/covers/kepler.jpg",
+  1
+);
+
+INSERT INTO Book VALUES (
+  8,
+  "1406845892",
+  "Bacon", NULL,
+  "Echo Library",
+  '2007-08-28',
+  "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. ",
+  "assets/books/bacon.txt",
+  "assets/covers/kepler.jpg",
+  3
+);
+
+INSERT INTO Book VALUES (
+  9,
+  "0486264726",
+   "The Call of the Wild",
+   "1 Edition",
+   "Dover Publications",
+   '1990-07-01',
+   "Jack London's novels and ruggedly individual life seemed to embody American hopes, frustrations, and romantic longings in the turbulent first years of the twentieth century.",
+  "assets/books/callOfWild.txt",
+  "assets/covers/callOfTheWild.jpg",
+  8
+);
 
 
 INSERT INTO Author VALUES(0, "Edgar", "Wallace");
@@ -228,7 +329,7 @@ INSERT INTO BookGenre VALUES(9, 3);
 
 /* Accounts */
   /* 4 user accounts (3 students, 1 admin) */
-	
+
 INSERT INTO User VALUES("meredithgrey@seattlegrace.com", "password1", 0, "Picture", "Meredith", "Grey");
 INSERT INTO User VALUES("derekshepherd@seattlegrace.com", "password2", 0, "Picture", "Derek", "Shepherd");
 INSERT INTO User VALUES("janedoe@email.com", "password3", 1, "Picture", "Jane", "Doe");
@@ -243,7 +344,7 @@ INSERT INTO Friend VALUES("meredithgrey@seattlegrace.com", "janedoe@email.com");
 
 /* Reviews */
   /* Add reviews for 3 books for each user (different books preferably) */
-  
+
 INSERT INTO Review VALUES(9, "johndoe@email.com", 8, "Great book! Even better than the movie.");
 INSERT INTO Review VALUES(6, "johndoe@email.com", 2, "It's okay.");
 INSERT INTO Review VALUES(1, "johndoe@email.com", 10, "My absolute favorite!");
@@ -257,11 +358,11 @@ INSERT INTO Review VALUES(5, "meredithgrey@seattlegrace.com", 2, "It's too scary
 INSERT INTO Review VALUES(0, "derekshepherd@seattlegrace.com", 5, "Not the best book I've read this week.");
 INSERT INTO Review VALUES(6, "derekshepherd@seattlegrace.com", 4, "Not my favorite");
 INSERT INTO Review VALUES(7, "derekshepherd@seattlegrace.com", 7, "One of my favorite biographies.");
-  
+
 
 /* Holds / Loans */
   /* Add two expired loans for each user for two of the books reviewed (2 week duration) */
-  
+
 INSERT INTO Loan VALUES(9, "johndoe@email.com", '2016-09-01', '2016-09-14');
 INSERT INTO Loan VALUES(1, "johndoe@email.com", '2016-09-25', '2016-10-9');
 
@@ -271,9 +372,9 @@ INSERT INTO Loan VALUES(5, "meredithgrey@seattlegrace.com", '2016-08-18', '2016-
 INSERT INTO Loan VALUES(0, "derekshepherd@seattlegrace.com", '2016-10-01', '2016-11-15');
 INSERT INTO Loan VALUES(6, "derekshepherd@seattlegrace.com", '2016-09-22', '2016-10-06');
 
-  
+
   /* Add expired holds for each user for two of the books reviewed (expire when loan started) */
-  
+
 INSERT INTO Hold VALUES(9, "johndoe@email.com", '2016-08-25', '2016-09-01');
 INSERT INTO Hold VALUES(1, "johndoe@email.com", '2016-09-12', '2016-09-25');
 
@@ -282,13 +383,13 @@ INSERT INTO Hold VALUES(5, "meredithgrey@seattlegrace.com", '2016-08-04', '2016-
 
 INSERT INTO Hold VALUES(0, "derekshepherd@seattlegrace.com", '2016-09-24', '2016-10-01');
 INSERT INTO Hold VALUES(6, "derekshepherd@seattlegrace.com", '2016-09-18', '2016-09-22');
-  
+
   /* Add holds for each user that has reviews for the book the other one has on loan
     (with start date sometime after they receive lock)(also ensure these books only have one copy available
     each) */
-    
+
 /* Not sure what you're trying to do?? */
-    
+
   /* Add loans for the last book each user reviewed to expire when classes end this term (with start date 2 weeks before) */
 
 INSERT INTO Loan VALUES(5, "johndoe@email.com", '2016-12-02', '2016-012-16');

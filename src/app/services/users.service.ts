@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { User } from 'api/models';
 
+let SQL: any;
+
 @Injectable()
 export class UsersService {
 
@@ -15,6 +17,8 @@ export class UsersService {
 
   // Validate login / get user info
   public login(email: string, password: string) {
+    console.log(SQL);
+
     this._router.navigateByUrl('/home');
   }
 
