@@ -170,7 +170,7 @@ INSERT INTO Book VALUES (
   NULL,
   '1915-01-01',
   "It is a time when the major world powers are vying for colonial honors, a time of ju-ju, witch doctors, and an uneasy peace with Bosambo, impressive chief of the Ochori. ",
-  "assets/books/bones.txt",
+  "assets/books/0.txt",
   "assets/covers/bones.jpg",
   5
 );
@@ -183,7 +183,7 @@ INSERT INTO Book VALUES (
   "Queensway Library",
   NULL,
   "Charles Garvice was a prolific British writer of over 150 romance novels, who also used the female pseudonym Caroline Hart",
-  "assets/books/OnlyAGirlsLove.txt",
+  "assets/books/1.txt",
   "assets/covers/onlyAGirlsLove.jpg",
   2
 );

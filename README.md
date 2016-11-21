@@ -46,6 +46,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [ ] Wire to backend
 - [ ] Book Preview
   - [ ] Run queries to get if book is on user's hold or loan lists
+  - [ ] Open to reader if user has hold
 - [ ] Dashboard
   - [x] Show the user information on a card
   - [ ] Wire to backend
