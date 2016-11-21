@@ -395,6 +395,7 @@ INSERT INTO Hold VALUES(6, "derekshepherd@seattlegrace.com", '2016-09-18', '2016
     each) */
 
 /* Not sure what you're trying to do?? */
+/* Yeah, idk either */
 
   /* Add loans for the last book each user reviewed to expire when classes end this term (with start date 2 weeks before) */
 
