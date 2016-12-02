@@ -46,19 +46,24 @@ export class UsersService {
   // Validate login / get user info
   public login(email: string, password: string): Promise<Object> {
     return new Promise<Object>((resolve, reject) => {
-      const acct = this._ds.queryDB('SELECT * FROM User WHERE Email = $email', { $email: email });
+      this._ds.queryDB('SELECT * FROM User WHERE Email = $email', { $email: email }).then(acct => {
+        if (acct[0]) {
+          const user = acct[0];
+          if (user.Password == password) {
+            this.user = this.cleanUser(user);
 
-      if (acct[0]) {
-        const user = acct[0];
-        if (user.Password == password) {
-          this.user = this.cleanUser(user);
-          resolve(null);
+            // Get holds, loans
+
+            // Get friends
+
+            resolve(null);
+          } else {
+            reject('Username and password do not match.');
+          }
         } else {
-          reject('Username and password do not match.');
+          reject('Username does not exists.');
         }
-      } else {
-        reject('Username does not exists.');
-      }
+      });
     });
   }
 

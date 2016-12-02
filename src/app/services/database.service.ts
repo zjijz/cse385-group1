@@ -24,13 +24,18 @@ export class DatabaseService {
     xhr.send();
   }
 
-  queryDB(query: string, params?: Object): any[] {
-    let results: any[] = [];
-    this.db.each(query, params, item => results.push(item));
-    return results;
+  queryDB(query: string, params?: Object): Promise<any[]> {
+    return new Promise<any[]>((resolve, reject) => {
+      let results: any[] = [];
+      this.db.each(query, params, item => results.push(item));
+      resolve(results);
+    });
   }
 
-  updateDB(query: string, params: Object) {
-    this.db.run(query, params);
+  updateDB(query: string, params: Object): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.db.run(query, params);
+      resolve(null);
+    });
   }
 }

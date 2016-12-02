@@ -49,7 +49,8 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [ ] Wire to backend
   - [ ] Add a thing where searching switches out the hold/loan view with search results
   - [ ] Add a keyup event hook to check if a user hit 'enter'
-  - [ ] If no holds / loans, add a message to tell user to search for books
+  - [x] If no holds / loans, add a message to tell user to search for books
+  - [ ] Issue if no holds or loans on user account
 - [ ] Book Preview
   - [ ] Display all book information
   - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
