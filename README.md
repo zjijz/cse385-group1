@@ -32,10 +32,12 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## To-Do 
-- [ ] User mode
+- [x] User mode
   - Instructions of how to use
-- [ ] Superuser mode
+- [x] Superuser mode
   - Instructions of how to use
+- [x] General
+  - [x] Fix issue with drawer not closing on reroute
 - [ ] Login page
   - [x] Form
   - [ ] Wired to backend
@@ -44,9 +46,13 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Hold scroller
   - [x] Search bar
   - [ ] Wire to backend
+  - [ ] Add a thing where searching switches out the hold/loan view with search results
+  - [ ] Add a keyup event hook to check if a user hit 'enter'
+  - [ ] If no holds / loans, add a message to tell user to search for books
 - [ ] Book Preview
-  - [ ] Run queries to get if book is on user's hold or loan lists
-  - [ ] Open to reader if user has hold
+  - [ ] Display all book information
+  - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
+  - [ ] Ability to open to reader if user has a loan for the book
 - [ ] Dashboard
   - [x] Show the user information on a card
   - [ ] Wire to backend
@@ -55,3 +61,6 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [ ] Add ability to delete posts
   - [ ] Superuser shows all reviews with ability to delete
   - [ ] Wire to backend
+  - [ ] Remove padding from around review location to clean up UI
+  - [ ] Get a md-select component to mesh with theme better
+  - [ ] (Reach) Create notifications when friends create holds / loans

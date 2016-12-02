@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router'
 import { UsersService } from "./services/users.service";
 
@@ -8,6 +8,9 @@ import { UsersService } from "./services/users.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('layout')
+  private layout: ElementRef;
+
   private title = 'The Barbs Library';
 
   private atLogin: boolean = true;
@@ -16,6 +19,10 @@ export class AppComponent {
     this._router.events.subscribe((val: Event) => {
       if (val instanceof NavigationEnd) {
         console.log(val);
+
+        if (this.layout.nativeElement.MaterialLayout.drawer_.className.indexOf('is-visible') != -1) {
+          this.layout.nativeElement.MaterialLayout.toggleDrawer();
+        }
       }
     });
   }
