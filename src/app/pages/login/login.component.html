@@ -3,6 +3,7 @@
                  actionsBorder="true">
     <p title class="title">Login to Barbs Library!</p>
     <div class="inputs" text>
+      <p class="error" *ngIf="errString != ''">{{errString}}</p>
       <material-input [idName]="email" label="Email" [(ngModel)]="email"></material-input>
       <material-input [idName]="password" label="Password" type="password" [(ngModel)]="password"></material-input>
     </div>

@@ -38,9 +38,10 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - Instructions of how to use
 - [x] General
   - [x] Fix issue with drawer not closing on reroute
-- [ ] Login page
+  - [x] Fix link issues showing on login page
+- [x] Login page
   - [x] Form
-  - [ ] Wired to backend
+  - [x] Wired to backend
 - [ ] Home page
   - [x] Loan scroller
   - [x] Hold scroller

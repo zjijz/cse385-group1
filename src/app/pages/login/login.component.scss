@@ -25,6 +25,10 @@
 
     .inputs {
       color: rgba(0, 0, 0, .7);
+
+      .error {
+        color: map-get($colors, error);
+      }
     }
 
     p {

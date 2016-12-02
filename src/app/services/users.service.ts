@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { User } from 'api/models';
 
@@ -12,7 +11,7 @@ export class UsersService {
 
   private sql = window['SQL'];
 
-  constructor(private _router: Router, private _ds: DatabaseService) {
+  constructor(private _ds: DatabaseService) {
     this.user = <User> { email: null, privilege: null, picture: null, first_name: null, last_name: null,
                     friends: [], loans: [], holds: [] };
   }
@@ -45,21 +44,22 @@ export class UsersService {
   }
 
   // Validate login / get user info
-  public login(email: string, password: string) {
-    const acct = this._ds.queryDB('SELECT * FROM User WHERE Email = $email', { $email: email });
+  public login(email: string, password: string): Promise<Object> {
+    return new Promise<Object>((resolve, reject) => {
+      const acct = this._ds.queryDB('SELECT * FROM User WHERE Email = $email', { $email: email });
 
-    if (acct[0]) {
-      const user = acct[0];
-      if (user.Password == password) {
-        this.user = this.cleanUser(user);
+      if (acct[0]) {
+        const user = acct[0];
+        if (user.Password == password) {
+          this.user = this.cleanUser(user);
+          resolve(null);
+        } else {
+          reject('Username and password do not match.');
+        }
       } else {
-        // Password mismatch error
+        reject('Username does not exists.');
       }
-    } else {
-      // Email doesn't exist error
-    }
-
-    //this._router.navigateByUrl('/home');
+    });
   }
 
   // Get reviews for all friends a user has
@@ -67,6 +67,6 @@ export class UsersService {
   // Get all reviews on DB (for superuser)
 
   public logout() {
-    this._router.navigateByUrl('/');
+    // stub
   }
 }
