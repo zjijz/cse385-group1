@@ -171,7 +171,7 @@ INSERT INTO Book VALUES (
   '1915-01-01',
   "It is a time when the major world powers are vying for colonial honors, a time of ju-ju, witch doctors, and an uneasy peace with Bosambo, impressive chief of the Ochori. ",
   "assets/books/0.txt",
-  "assets/covers/bones.jpg",
+  "assets/covers/0.png",
   5
 );
 
@@ -184,7 +184,7 @@ INSERT INTO Book VALUES (
   NULL,
   "Charles Garvice was a prolific British writer of over 150 romance novels, who also used the female pseudonym Caroline Hart",
   "assets/books/1.txt",
-  "assets/covers/onlyAGirlsLove.jpg",
+  "assets/covers/1.png",
   2
 );
 
@@ -196,8 +196,8 @@ INSERT INTO Book VALUES (
   "Aegypan",
   '2011-05-01',
   "For an instant you think it is temporary blindness, this sudden dark that comes in the middle of a bright afternoon. It must be blindness, you think; could the sun that was tanning you have gone out instantaneously, leaving you in utter blackness? ",
-  "assets/books/HallOfMirrors.txt",
-  "assets/covers/hallOfMirrors.jpg",
+  "assets/books/2.txt",
+  "assets/covers/2.png",
   4
 );
 
@@ -209,8 +209,8 @@ INSERT INTO Book VALUES (
   "Dover Publications",
   '2000-04-18',
   "During a business visit to Count Dracula's castle in Transylvania, a young English solicitor finds himself at the center of a series of horrifying incidents.",
-  "assets/books/dracula.txt",
-  "assets/covers/dracula.jpg",
+  "assets/books/3.txt",
+  "assets/covers/3.png",
   1
 );
 
@@ -221,8 +221,8 @@ INSERT INTO Book VALUES (
   "Reprint Edition",
   "Wordsworth Editions Ltd",
   '1997-08-05', "A priceless Indian diamond which had been brought to England as spoils of war, is given to Rachel Verrinder on her eighteenth birthday.",
-  "assets/books/moonstone.txt",
-  "assets/covers/moonstone.jpg",
+  "assets/books/4.txt",
+  "assets/covers/4.png",
   1
 );
 
@@ -234,8 +234,8 @@ INSERT INTO Book VALUES (
   "CreateSpace Independent",
   '2011-07-12',
   "Kafka's masterpiece and best-known work, The Trial tells the story of a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime not revealed to him or to the reader.",
-  "assets/books/trial.txt",
-  "assets/covers/trial.jpg",
+  "assets/books/5.txt",
+  "assets/covers/5.png",
   6
 );
 
@@ -247,8 +247,8 @@ INSERT INTO Book VALUES (
   "Bantam Classics",
   '1981-03-01',
   "Mad Captain Ahab's quest for the White Whale is a timeless epic--a stirring tragedy of vengeance and obsession, a searing parable about humanity lost in a universe of moral ambiguity.",
-  "assets/books/moby.txt",
-  "assets/covers/moby.jpg",
+  "assets/books/6.txt",
+  "assets/covers/6.png",
   2
 );
 
@@ -260,20 +260,21 @@ INSERT INTO Book VALUES (
   "BiblioLife",
   '2009-05-20',
   "This is a pre-1923 historical reproduction that was curated for quality.",
-  "assets/books/kepler.txt",
-  "assets/covers/kepler.jpg",
+  "assets/books/7.txt",
+  "assets/covers/7.png",
   1
 );
 
 INSERT INTO Book VALUES (
   8,
   "1406845892",
-  "Bacon", NULL,
+  "Bacon", 
+  NULL,
   "Echo Library",
   '2007-08-28',
   "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. ",
-  "assets/books/bacon.txt",
-  "assets/covers/kepler.jpg",
+  "assets/books/8.txt",
+  "assets/covers/8.png",
   3
 );
 
@@ -285,8 +286,8 @@ INSERT INTO Book VALUES (
    "Dover Publications",
    '1990-07-01',
    "Jack London's novels and ruggedly individual life seemed to embody American hopes, frustrations, and romantic longings in the turbulent first years of the twentieth century.",
-  "assets/books/callOfWild.txt",
-  "assets/covers/callOfTheWild.jpg",
+  "assets/books/9.txt",
+  "assets/covers/9.png",
   8
 );
 
