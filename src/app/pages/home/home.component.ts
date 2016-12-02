@@ -10,7 +10,7 @@ import { Book } from 'api/models';
 export class HomeComponent implements OnInit {
 
   private holds: Book[] = [
-    <Book> {
+    /*<Book> {
       _id: 0,
       title: 'The Odds of Loving Grover Cleveland',
       edition: '1',
@@ -81,10 +81,10 @@ export class HomeComponent implements OnInit {
       cover: 'assets/covers/1.png',
       authors: ['Test 1', 'Test 2'],
       genres: ['Fiction', 'Romance', 'Horror']
-    }
+    }*/
   ];
   private loans: Book[] = [
-    <Book> {
+    /*<Book> {
       _id: 0,
       title: 'The Odds of Loving Grover Cleveland',
       edition: '1',
@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
       cover: 'assets/covers/1.png',
       authors: ['Test 1', 'Test 2'],
       genres: ['Fiction', 'Romance', 'Horror']
-    }
+    }*/
   ];
 
   constructor() { }

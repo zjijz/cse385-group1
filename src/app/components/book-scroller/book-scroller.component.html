@@ -1,4 +1,4 @@
-<div mdl class="scroller mdl-card mdl-shadow--4dp">
+<div mdl class="scroller mdl-card mdl-shadow--4dp" *ngIf="">
   <div class="mdl-card-title">{{title}}</div>
   <div class="mdl-card__supporting-text">
     <div class="books-wrapper">
@@ -8,3 +8,5 @@
     </div>
   </div>
 </div>
+
+<p class="scroller-empty-text" *ngIf="">Search for some books to checkout!</p>

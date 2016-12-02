@@ -7,20 +7,21 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Home</a>
-        <a class="mdl-navigation__link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-        <a class="mdl-navigation__link" routerLink="/feed" routerLinkActive="active">Feed</a>
-        <a class="mdl-navigation__link" (click)="onLogout()" routerLinkActive="active">Logout</a>
+        <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active" *ngIf="!atLogin">Home</a>
+        <a class="mdl-navigation__link" routerLink="/dashboard" routerLinkActive="active" *ngIf="!atLogin">Dashboard</a>
+        <a class="mdl-navigation__link" routerLink="/feed" routerLinkActive="active" *ngIf="!atLogin">Feed</a>
+        <a class="mdl-navigation__link" (click)="onLogout()" routerLinkActive="active" *ngIf="!atLogin">Logout</a>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">{{title}}</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Home</a>
-      <a class="mdl-navigation__link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a class="mdl-navigation__link" routerLink="/feed" routerLinkActive="active">Feed</a>
-      <a class="mdl-navigation__link" (click)="onLogout()" routerLinkActive="active">Logout</a>
+      <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active" *ngIf="!atLogin">Home</a>
+      <a class="mdl-navigation__link" routerLink="/dashboard" routerLinkActive="active" *ngIf="!atLogin">Dashboard</a>
+      <a class="mdl-navigation__link" routerLink="/feed" routerLinkActive="active" *ngIf="!atLogin">Feed</a>
+      <a class="mdl-navigation__link" (click)="onLogout()" routerLinkActive="active" *ngIf="!atLogin">Logout</a>
+      <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active" *ngIf="atLogin">Login</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
