@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS Review (
   Email VARCHAR(50) NOT NULL,
   Rating INT NOT NULL,
   Words VARCHAR(140) NOT NULL,
+  DateAdded DATE NOT NULL,
   PRIMARY KEY (BookId, Email),
   FOREIGN KEY (BookId) REFERENCES Book(BookId)
 	ON DELETE CASCADE
@@ -362,28 +363,28 @@ INSERT INTO Friend VALUES("derekshepherd@seattlegrace.com", "johndoe@email.com")
 /* Reviews */
   /* Add reviews for 3 books for each user (different books preferably) */
 
-INSERT INTO Review VALUES(9, "johndoe@email.com", 8, "Great book! Even better than the movie.");
-INSERT INTO Review VALUES(6, "johndoe@email.com", 2, "It's okay.");
-INSERT INTO Review VALUES(1, "johndoe@email.com", 10, "My absolute favorite!");
+INSERT INTO Review VALUES(9, "johndoe@email.com", 8, "Great book! Even better than the movie.", '2016-09-04');
+INSERT INTO Review VALUES(6, "johndoe@email.com", 2, "It's okay.", '2016-08-14');
+INSERT INTO Review VALUES(1, "johndoe@email.com", 10, "My absolute favorite!", '2016-10-04');
 
 
-INSERT INTO Review VALUES(3, "meredithgrey@seattlegrace.com", 5, "It's a classic.");
-INSERT INTO Review VALUES(2, "meredithgrey@seattlegrace.com", 5, "Good read.");
-INSERT INTO Review VALUES(5, "meredithgrey@seattlegrace.com", 2, "It's too scary. Not a fan.");
+INSERT INTO Review VALUES(3, "meredithgrey@seattlegrace.com", 5, "It's a classic.", '2016-09-04');
+INSERT INTO Review VALUES(2, "meredithgrey@seattlegrace.com", 5, "Good read.", '2016-08-23');
+INSERT INTO Review VALUES(5, "meredithgrey@seattlegrace.com", 2, "It's too scary. Not a fan.", '2016-08-15');
 
 
-INSERT INTO Review VALUES(0, "derekshepherd@seattlegrace.com", 5, "Not the best book I've read this week.");
-INSERT INTO Review VALUES(6, "derekshepherd@seattlegrace.com", 4, "Not my favorite");
-INSERT INTO Review VALUES(7, "derekshepherd@seattlegrace.com", 7, "One of my favorite biographies.");
+INSERT INTO Review VALUES(0, "derekshepherd@seattlegrace.com", 5, "Not the best book I've read this week.", '2016-10-04');
+INSERT INTO Review VALUES(6, "derekshepherd@seattlegrace.com", 4, "Not my favorite", '2016-09-30');
+INSERT INTO Review VALUES(7, "derekshepherd@seattlegrace.com", 7, "One of my favorite biographies.", '2016-10-24');
 
 
 /* Holds / Loans */
   /* Add two expired loans for each user for two of the books reviewed (2 week duration) */
 
 INSERT INTO Loan VALUES(9, "johndoe@email.com", '2016-09-01', '2016-09-14');
-INSERT INTO Loan VALUES(1, "johndoe@email.com", '2016-09-25', '2016-10-9');
+INSERT INTO Loan VALUES(1, "johndoe@email.com", '2016-09-25', '2016-10-09');
 
-INSERT INTO Loan VALUES(2, "meredithgrey@seattlegrace.com", '2016-08-01', '2016-09-14');
+INSERT INTO Loan VALUES(2, "meredithgrey@seattlegrace.com", '2016-08-01', '2016-08-14');
 INSERT INTO Loan VALUES(5, "meredithgrey@seattlegrace.com", '2016-08-18', '2016-09-01');
 
 INSERT INTO Loan VALUES(0, "derekshepherd@seattlegrace.com", '2016-10-01', '2016-11-15');
@@ -400,6 +401,8 @@ INSERT INTO Hold VALUES(5, "meredithgrey@seattlegrace.com", '2016-08-04', '2016-
 
 INSERT INTO Hold VALUES(0, "derekshepherd@seattlegrace.com", '2016-09-24', '2016-10-01');
 INSERT INTO Hold VALUES(6, "derekshepherd@seattlegrace.com", '2016-09-18', '2016-09-22');
+
+INSERT INTO Hold VALUES(8, "johndoe@email.com", '2016-11-25', '2016-12-08');
 
   /* Add holds for each user that has reviews for the book the other one has on loan
     (with start date sometime after they receive lock)(also ensure these books only have one copy available
