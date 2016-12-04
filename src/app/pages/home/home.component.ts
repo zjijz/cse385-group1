@@ -88,20 +88,20 @@ export class HomeComponent implements OnInit {
    <Book> {
       _id: 0,
       title: 'The Odds of Loving Grover Cleveland',
-      edition: '1',
-      file: 'assets/books/0.txt',
-      cover: 'assets/covers/0.png',
-      authors: ['Test 1', 'Test 2'],
-      genres: ['Fiction', 'Romance']
+      //edition: '1',
+      //file: 'assets/books/0.txt',
+      cover: 'assets/covers/trial.png',
+      //authors: ['Test 1', 'Test 2'],
+      //genres: ['Fiction', 'Romance']
     },
     <Book> {
       _id: 1,
       title: 'Life and Death',
-      edition: '1',
-      file: 'assets/books/1.txt',
+      //edition: '1',
+      //file: 'assets/books/1.txt',
       cover: 'assets/covers/1.png',
-      authors: ['Test 1', 'Test 2'],
-      genres: ['Fiction', 'Romance', 'Horror']
+      //authors: ['Test 1', 'Test 2'],
+      //genres: ['Fiction', 'Romance', 'Horror']
     }
   ];
 

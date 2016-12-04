@@ -1,12 +1,12 @@
 <div mdl class="scroller mdl-card mdl-shadow--4dp">
   <div class="mdl-card-title">{{title}}</div>
   <div class="mdl-card__supporting-text">
-    <div class="scroller-error-wrapper" *ngIf="books.length == 0">
-      <p class="scroller-empty-text">Search for some books to checkout!</p>
-    </div>
-    <div class="books-wrapper" *ngIf="books.length > 0">
-      <a [routerLink]="'/preview/' + book._id" *ngFor="let book of books; let i = index">
-        <img [src]="'assets/covers/' + book._id + '.png'" [alt]="book.title + ' Cover'">
+    <div class="books-wrapper">
+      <div class="scroller-error-wrapper" *ngIf="books.length == 0">
+        <p class="scroller-empty-text">Search for some books to checkout!</p>
+      </div>
+      <a [routerLink]="'/preview/' + book._id" *ngFor="let book of books">
+        <img [src]="book.cover" [alt]="book.title + ' Cover'">
       </a>
     </div>
   </div>

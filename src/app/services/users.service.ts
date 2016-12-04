@@ -19,7 +19,7 @@ export class UsersService {
 
   // Clean results
   private cleanUser(user: Object) {
-    let cleanUser: User = {};
+    let cleanUser: User = { holds: [], loans: [], friends: [] };
 
     if (user['Email']) {
       cleanUser.email = user['Email'];
@@ -65,7 +65,8 @@ export class UsersService {
                 this.user.loans = res;
 
                 // Get friends
-                const friends = this._ds.queryDB("SELECT EmailSecond FROM Friend WHERE EmailFirst = $email", email);
+                this._ds.queryDB("SELECT EmailSecond FROM Friend WHERE EmailFirst = $email", email)
+                  .then(friends => friends.forEach(friend => this.user.friends.push(this.cleanFriend(friend))));
               });
             });
 

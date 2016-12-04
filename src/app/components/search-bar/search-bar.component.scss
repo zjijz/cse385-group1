@@ -2,11 +2,8 @@
 
 .search-bar {
   width: 100%;
-  max-width: 750px;
   min-height: 0;
-  height: 100%;
-
-  flex: 1 1 auto;
+  height: 70px;
 
   .mdl-card__actions {
     padding: 0 map-get($sizings, normal);

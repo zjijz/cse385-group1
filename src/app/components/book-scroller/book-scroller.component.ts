@@ -18,6 +18,7 @@ export class BookScrollerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.books);
   }
 
 }

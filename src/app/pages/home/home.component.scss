@@ -1,5 +1,8 @@
 @import '../../styles/_constants';
 
+$searchbar-height: 75px;
+$other-height: calc((100vh - #{$searchbar-height} - 30px - 56px) / 2);
+
 .home {
   @extend .page;
 
@@ -10,14 +13,9 @@
     max-width: $column-size;
     height: 100%;
 
-    display: flex;
-    flex-direction: column;
-
     > * {
-      flex: 1 1 auto;
       display: flex;
 
-      justify-content: center;
       box-sizing: border-box;
 
       padding: map-get($sizings, half) 0;
@@ -29,12 +27,22 @@
       &:first-child {
         padding-top: 0;
       }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
 
     #searchbar {
-      height: 75px;
+      height: $searchbar-height;
+    }
 
-      flex: 0 0 auto;
+    #loans {
+      height: $other-height;
+    }
+
+    #holds {
+      height: $other-height;
     }
   }
 }

@@ -65,7 +65,7 @@ export class BooksService {
   // Get user loans
   public getUserLoans(email: string): Promise<Book[]> {
     return new Promise<Book[]>((resolve, reject) => {
-      this._ds.queryDB("SELECT BookId, Cover FROM Book NATURAL JOIN (SELECT BookId FROM Loan " +
+      this._ds.queryDB("SELECT BookId, Title, Cover FROM Book NATURAL JOIN (SELECT BookId FROM Loan " +
         "WHERE Email = $email AND EndDate > DATE('now'))", { $email: email })
         .then(results => {
           let ret: Book[] = [];
@@ -78,7 +78,7 @@ export class BooksService {
   // Get user holds
   public getUserHolds(email: string): Promise<Book[]> {
     return new Promise<Book[]>((resolve, reject) => {
-      this._ds.queryDB("SELECT BookId, Cover FROM Book NATURAL JOIN (SELECT BookId FROM Hold " +
+      this._ds.queryDB("SELECT BookId, Title, Cover FROM Book NATURAL JOIN (SELECT BookId FROM Hold " +
         "WHERE Email = $email AND EndDate > DATE('now'))", { $email: email })
         .then(results => {
           let ret: Book[] = [];

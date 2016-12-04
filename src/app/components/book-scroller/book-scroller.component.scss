@@ -6,19 +6,6 @@
 
   width: 100%;
 
-  &-error-wrapper {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    .scroller-empty-text {
-      margin: 0;
-    }
-  }
-
   .mdl-card-title {
     opacity: 0.7;
 
@@ -51,6 +38,17 @@
 
       background-color: white;
       overflow-y: scroll;
+
+      .scroller-error-wrapper {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .scroller-empty-text {
+          margin: 0;
+        }
+      }
 
       a {
         flex: 0;
