@@ -268,7 +268,7 @@ INSERT INTO Book VALUES (
 INSERT INTO Book VALUES (
   8,
   "1406845892",
-  "Bacon", 
+  "Bacon",
   NULL,
   "Echo Library",
   '2007-08-28',
@@ -347,7 +347,17 @@ INSERT INTO User VALUES("johndoe@email.com", "password4", 0, "Picture", "John", 
   /* Create one friendship between 2 students */
 
 INSERT INTO Friend VALUES("meredithgrey@seattlegrace.com", "derekshepherd@seattlegrace.com");
+INSERT INTO Friend VALUES("derekshepherd@seattlegrace.com", "meredithgrey@seattlegrace.com");
+
 INSERT INTO Friend VALUES("meredithgrey@seattlegrace.com", "janedoe@email.com");
+INSERT INTO Friend VALUES("janedoe@email.com", "meredithgrey@seattlegrace.com");
+
+INSERT INTO Friend VALUES("johndoe@email.com", "meredithgrey@seattlegrace.com");
+INSERT INTO Friend VALUES("meredithgrey@seattlegrace.com", "johndoe@email.com");
+
+INSERT INTO Friend VALUES("johndoe@email.com", "derekshepherd@seattlegrace.com");
+INSERT INTO Friend VALUES("derekshepherd@seattlegrace.com", "johndoe@email.com");
+
 
 /* Reviews */
   /* Add reviews for 3 books for each user (different books preferably) */

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from 'api/models';
 
 import { DatabaseService } from './database.service';
+import { BooksService } from "./books.service";
 
 @Injectable()
 export class UsersService {
@@ -11,7 +12,7 @@ export class UsersService {
 
   private sql = window['SQL'];
 
-  constructor(private _ds: DatabaseService) {
+  constructor(private _ds: DatabaseService, private _bs: BooksService) {
     this.user = <User> { email: null, privilege: null, picture: null, first_name: null, last_name: null,
                     friends: [], loans: [], holds: [] };
   }
@@ -43,6 +44,10 @@ export class UsersService {
     return cleanUser;
   }
 
+  private cleanFriend(user: Object) {
+    return { email: user['EmailSecond'] };
+  }
+
   // Validate login / get user info
   public login(email: string, password: string): Promise<Object> {
     return new Promise<Object>((resolve, reject) => {
@@ -53,8 +58,16 @@ export class UsersService {
             this.user = this.cleanUser(user);
 
             // Get holds, loans
+            this._bs.getUserHolds(email).then(res => {
+              this.user.holds = res;
 
-            // Get friends
+              this._bs.getUserLoans(email).then(res => {
+                this.user.loans = res;
+
+                // Get friends
+                const friends = this._ds.queryDB("SELECT EmailSecond FROM Friend WHERE EmailFirst = $email", email);
+              });
+            });
 
             resolve(null);
           } else {

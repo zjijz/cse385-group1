@@ -19,7 +19,6 @@
     }
   }
 
-
   .mdl-card-title {
     opacity: 0.7;
 
@@ -32,12 +31,12 @@
 
   .mdl-card__supporting-text {
     width: 100%;
+    height: 100%;
 
     padding: map-get($sizings, half) map-get($sizings, normal) map-get($sizings, normal) map-get($sizings, normal);
 
     box-sizing: border-box;
 
-    flex: 1 1 auto;
     display: flex;
 
     @include desktop {
@@ -54,19 +53,19 @@
       overflow-y: scroll;
 
       a {
-        height: 100%;
-
         flex: 0;
+        height: 100%;
+        min-height: 100%;
         display: inline-block;
+
+        margin: 0 map-get($sizings, normal) 0 0;
 
         img {
           width: auto;
           height: 100%;
 
           margin: 0;
-          padding: 0 map-get($sizings, normal) 0 0;
-
-          display: block;
+          padding: 0;
         }
       }
     }

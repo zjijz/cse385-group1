@@ -39,9 +39,14 @@ declare module 'api/models' {
     user?: User;
   }
 
+  interface Friend {
+    email: string;
+  }
+
   interface User {
     holds?: Book[];
     loans?: Book[];
+    friends?: Friend[];
     email?: string;
     privilege?: number;
     picture?: string;
