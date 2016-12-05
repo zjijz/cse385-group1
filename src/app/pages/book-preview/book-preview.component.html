@@ -1,3 +1,30 @@
-<p>
-  book-preview works!
-</p>
+<div class="preview">
+  <div class="left">
+    <img [src]="book.cover" [alt]="book.title + 'Cover'">
+  </div>
+  <div class="right">
+    <material-card [hasText]="true" [hasTitle]="true" [titleBorder]="true">
+      <div title>
+        <p>Book Details</p>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary"
+                (click)="placeOnHold()" *ngIf="book.num_available == 0 && !book.hasLoan && !book.hasHold">Place on Hold</button>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary"
+                (click)="openReader()" *ngIf="book.hasLoan">Read Book</button>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary"
+                (click)="placeOnLoan()" *ngIf="book.num_available > 0 && !book.hasLoan">Place on Hold</button>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary"
+                disabled *ngIf="book.hasHold">On Hold</button>
+      </div>
+      <div text>
+        <p>{{book.summary}}</p>
+        <material-input label="Title" idName="title" [(ngModel)]="book.title" [disabled]="true"></material-input>
+        <material-input label="Authors" idName="authors" [(ngModel)]="authors" [disabled]="true"></material-input>
+        <material-input label="ISBN" idName="isbn" [(ngModel)]="book.isbn"></material-input>
+        <material-input label="Edition" idName="edition" [(ngModel)]="book.edition"></material-input>
+        <material-input label="Publisher" idName="publisher" [(ngModel)]="book.publisher"></material-input>
+        <material-input label="Date Published" idName="pubDate" [(ngModel)]="book.pub_date" [disabled]="true"></material-input>
+        <material-input label="Genres" idName="genre" [(ngModel)]="genres" [disabled]="true"></material-input>
+      </div>
+    </material-card>
+  </div>
+</div>

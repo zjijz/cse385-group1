@@ -61,10 +61,32 @@ export class BooksService {
   }
 
   // Get Book by BookId
+  public getBookInfo(bookId: number): Promise<Book> {
+    return new Promise<Book>((resolve, reject) => {
+      this._ds.queryDB("SELECT * FROM BookView WHERE BookId = $bookId", { $bookId: bookId })
+        .then(res => {
+          resolve(this.cleanBook(res[0]));
+
+          // Get Authors
+
+          // Get Publishers
+
+          // Get loan info
+
+          // Get hold info
+        });
+    });
+  }
 
   // Get hold info by BookId
+  private getHoldInfo(bookId: number) {
+
+  }
 
   // Get loan info by BookId
+  private getLoanInfo(bookId: number) {
+
+  }
 
   // Get user loans
   public getUserLoans(email: string): Promise<Book[]> {
@@ -106,7 +128,6 @@ export class BooksService {
         "WHERE GenreName LIKE '$search'";
       this._ds.queryDB(s.replace(/\$search/g, '%' + query + '%'))
       .then(res => {
-          console.log(res);
           let ret: Book[] = [];
           res.forEach(el => ret.push(this.cleanBook(el)));
           resolve(ret);

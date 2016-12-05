@@ -17,18 +17,20 @@ export class SearchBarComponent implements OnInit {
   @Output()
   private books = new EventEmitter<Book[]>();
 
+  private query: string = '';
+
   constructor(private _bs: BooksService) { }
 
   ngOnInit() { }
 
   search() {
-    console.log('searching...');
-
-    this._bs.fuzzySearch('m').then(res => console.log(res));
+    this._bs.fuzzySearch(this.query).then(res => this.books.emit(res));
   }
 
   private onInput(event) {
     this.isSearching.emit(event.target.value != "");
+
+    this.search();
   }
 
   private onKeyup(event) {

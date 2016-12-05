@@ -57,7 +57,25 @@ $search-height: calc(100vh - #{$searchbar-height} - 30px - 56px);
       }
 
       .books {
+        height: 100%;
 
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+
+        a {
+          height: 250px;
+
+          padding-right: map-get($sizings, normal);
+          padding-bottom: map-get($sizings, normal);
+
+          flex: 0;
+
+          img {
+            height: 100%;
+          }
+        }
       }
     }
   }

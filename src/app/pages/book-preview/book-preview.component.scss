@@ -1,0 +1,47 @@
+@import '../../styles/_constants';
+
+.preview {
+  @extend .page;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include desktop {
+    flex-direction: row;
+  }
+
+  .left {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      flex: 1 1 auto;
+    }
+  }
+
+  .right {
+    flex: 1 1 auto;
+
+    div[title] p {
+      @extend .card-title;
+
+      margin: 0;
+      padding-right: map-get($sizings, half);
+
+      vertical-align: middle;
+
+      display: inline-block;
+    }
+
+    overflow-y: scroll;
+  }
+}

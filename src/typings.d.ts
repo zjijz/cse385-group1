@@ -10,7 +10,7 @@ declare module 'api/models' {
     title?: string;
     edition?: string;
     publisher?: string;
-    pub_date?: number; // milliseconds from epoch
+    pub_date?: string; // milliseconds from epoch
     summary?: string;
     file?: string; // relative path to book contents
     cover?: string; // relative path to book cover img
@@ -18,8 +18,8 @@ declare module 'api/models' {
     num_available?: number;
     authors?: Author[];
     genres?: BookGenre[];
-    start_date?: number; // for loans / holds
-    end_date?: number; // for loans / holds
+    hasHold?: boolean;
+    hasLoan?: boolean;
   }
 
   interface Author {

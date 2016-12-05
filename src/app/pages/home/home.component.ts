@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'api/models';
 
 import { UsersService } from "../../services/users.service";
-import { BooksService } from "../../services/books.service";
 
 @Component({
   selector: 'app-home',
@@ -108,14 +107,11 @@ export class HomeComponent implements OnInit {
   ];
 
   private isSearching: boolean = false;
+  private searchBooks: Book[] = [];
 
-  constructor(private _us: UsersService, private _bs: BooksService) { }
+  constructor(private _us: UsersService) { }
 
   ngOnInit() {
     console.log(this._us.user);
-  }
-
-  private onSearchChange(event) {
-    console.log(event);
   }
 }
