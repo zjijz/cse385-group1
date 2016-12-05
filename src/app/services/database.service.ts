@@ -13,7 +13,7 @@ export class DatabaseService {
     console.log('Loading db...');
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/test.db', true);
+    xhr.open('GET', 'assets/test.txt', true);
     xhr.responseType = 'arraybuffer';
 
     xhr.onload = (evt: any) => {
