@@ -43,7 +43,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 - [x] Login page
   - [x] Form
   - [x] Wired to backend
-- [ ] Home page
+- [x] Home page
   - [x] Loan scroller
   - [x] Hold scroller
   - [x] Search bar
@@ -52,7 +52,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Add a keyup event hook to check if a user hit 'enter'
   - [x] If no holds / loans, add a message to tell user to search for books
   - [x] Issue if no holds or loans on user account
-  - [ ] Get search working
+  - [x] Get search working
 - [ ] Book Preview
   - [x] Display all book information
   - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)

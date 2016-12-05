@@ -1,0 +1,9 @@
+@import '../../styles/_constants';
+
+.reader {
+  @extend .page;
+
+  background-color: white;
+
+  white-space: pre-wrap;
+}
