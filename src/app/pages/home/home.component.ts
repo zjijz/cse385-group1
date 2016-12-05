@@ -110,4 +110,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log(this._us.user);
   }
+
+  private onSearch(event) {
+    console.log(event);
+  }
+
+  private onSearchChange(event) {
+    console.log(event);
+  }
 }

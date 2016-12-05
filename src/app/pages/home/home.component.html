@@ -1,6 +1,6 @@
 <div class="home">
   <div class="home-wrapper">
-    <app-search-bar id="searchbar"></app-search-bar>
+    <app-search-bar id="searchbar" (isSearching)="onSearch($event)" (books)="onSearchChange($event)"></app-search-bar>
     <app-book-scroller id="loans" [books]="_us.user.getValue().loans" title="Loans"></app-book-scroller>
     <app-book-scroller id="holds" [books]="_us.user.getValue().holds" title="Holds"></app-book-scroller>
   </div>

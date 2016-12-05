@@ -62,6 +62,10 @@ export class BooksService {
 
   // Get Book by BookId
 
+  // Get hold info by BookId
+
+  // Get loan info by BookId
+
   // Get user loans
   public getUserLoans(email: string): Promise<Book[]> {
     return new Promise<Book[]>((resolve, reject) => {
@@ -89,9 +93,10 @@ export class BooksService {
   }
 
   // Fuzzy search (search LIKE in title, author, publisher, date and merge them)
-
-  // Get hold info by BookId
-
-  // Get loan info by BookId
+  public fuzzySearch(query: string): Promise<Book[]> {
+    return new Promise<Book[]>((resolve, reject) => {
+      resolve([]);
+    });
+  }
 
 }
