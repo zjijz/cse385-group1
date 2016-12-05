@@ -36,9 +36,10 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - Instructions of how to use
 - [x] Superuser mode
   - Instructions of how to use
-- [x] General
+- [ ] General
   - [x] Fix issue with drawer not closing on reroute
   - [x] Fix link issues showing on login page
+  - [ ] Add a route guard to autoroute to login if user is not logged in
 - [x] Login page
   - [x] Form
   - [x] Wired to backend
@@ -46,7 +47,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Loan scroller
   - [x] Hold scroller
   - [x] Search bar
-  - [ ] Wire to backend
+  - [x] Wire to backend
   - [ ] Add a thing where searching switches out the hold/loan view with search results
   - [ ] Add a keyup event hook to check if a user hit 'enter'
   - [x] If no holds / loans, add a message to tell user to search for books
@@ -55,14 +56,14 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [ ] Display all book information
   - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
   - [ ] Ability to open to reader if user has a loan for the book
-- [ ] Dashboard
+- [x] Dashboard
   - [x] Show the user information on a card
-  - [ ] Wire to backend
+  - [x] Wire to backend
 - [ ] Feed
   - [x] Show all reviews from friends in simple scroll
   - [ ] Add ability to delete posts
   - [ ] Superuser shows all reviews with ability to delete
   - [ ] Wire to backend
   - [ ] Remove padding from around review location to clean up UI
-  - [ ] Get a md-select component to mesh with theme better
-  - [ ] (Reach) Create notifications when friends create holds / loans
+  - [ ] (Reach) Get a md-select component to mesh with theme better [Not doing]
+  - [ ] (Reach) Create notifications when friends create holds / loans [Not doing]

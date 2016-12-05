@@ -9,19 +9,19 @@
           <material-input idName="fname" label="First Name" [(ngModel)]="fname" (input)="isEdited = true"></material-input>
           <material-input idName="lname" label="Last Name" [(ngModel)]="lname" (input)="isEdited = true"></material-input>
         </div>
-        <material-input idName="email" label="Email" [(ngModel)]="email" disabled></material-input>
-        <material-input idName="numFriends" label="Total Friends" [(ngModel)]="numFriends" disabled></material-input>
+        <material-input idName="email" label="Email" [(ngModel)]="email" [disabled]="true"></material-input>
+        <material-input idName="numFriends" label="Total Friends" [(ngModel)]="numFriends" [disabled]="true"></material-input>
         <div class="row">
-          <material-input idName="numLoans" label="Total Loans" [(ngModel)]="numLoans" disabled></material-input>
-          <material-input idName="currLoans" label="Current Loans" [(ngModel)]="currLoans" disabled></material-input>
+          <material-input idName="numLoans" label="Total Loans" [(ngModel)]="numLoans" [disabled]="true"></material-input>
+          <material-input idName="currLoans" label="Current Loans" [(ngModel)]="currLoans" [disabled]="true"></material-input>
         </div>
         <div class="row">
-          <material-input idName="numHolds" label="Total Holds" [(ngModel)]="numHolds" disabled></material-input>
-          <material-input idName="currHolds" label="Current Holds" [(ngModel)]="currHolds" disabled></material-input>
+          <material-input idName="numHolds" label="Total Holds" [(ngModel)]="numHolds" [disabled]="true"></material-input>
+          <material-input idName="currHolds" label="Current Holds" [(ngModel)]="currHolds" [disabled]="true"></material-input>
         </div>
       </div>
       <div actions>
-        <button mdl class="mdl-button mdl-js-button mdl-button--primary" [disabled]="!isEdited" (click)="return;">Save</button>
+        <button mdl class="mdl-button mdl-js-button mdl-button--primary" [disabled]="!isEdited" (click)="isEdited = false; onSave()">Save</button>
       </div>
     </material-card>
   </div>
