@@ -1,7 +1,7 @@
 <div mdl class="search-bar mdl-card mdl-shadow--4dp">
   <div class="mdl-card__actions">
     <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="search">
+      <input class="mdl-textfield__input" type="text" id="search" (input)="onInput($event)" (keyup)="onKeyup($event)">
       <label class="mdl-textfield__label" for="search">Search</label>
     </div>
     <i class="material-icons" (click)="search()">search</i>

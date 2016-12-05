@@ -1,7 +1,17 @@
 <div class="home">
   <div class="home-wrapper">
-    <app-search-bar id="searchbar" (isSearching)="onSearch($event)" (books)="onSearchChange($event)"></app-search-bar>
-    <app-book-scroller id="loans" [books]="_us.user.getValue().loans" title="Loans"></app-book-scroller>
-    <app-book-scroller id="holds" [books]="_us.user.getValue().holds" title="Holds"></app-book-scroller>
+    <app-search-bar id="searchbar" (isSearching)="isSearching = $event" (books)="onSearchChange($event)"></app-search-bar>
+    <app-book-scroller id="loans" [books]="_us.user.getValue().loans" title="Loans" *ngIf="!isSearching"></app-book-scroller>
+    <app-book-scroller id="holds" [books]="_us.user.getValue().holds" title="Holds" *ngIf="!isSearching"></app-book-scroller>
+    <material-card id="search" *ngIf="isSearching" [hasTitle]="true" [hasText]="true" [titleBorder]="true">
+      <div title>
+        <p>Search Results</p>
+      </div>
+      <div class="books" text>
+        <!--<a [routerLink]="'/preview/' + book._id" *ngFor="let book of books">
+          <img [src]="book.cover" [alt]="book.title + ' Cover'">
+        </a>-->
+      </div>
+    </material-card>
   </div>
 </div>

@@ -21,8 +21,14 @@ export class SearchBarComponent implements OnInit {
 
   search() {
     console.log('searching...');
+  }
 
+  private onInput(event) {
+    this.isSearching.emit(event.target.value != "");
+  }
 
+  private onKeyup(event) {
+    if (event.keyCode === 13) this.search();
   }
 
 }

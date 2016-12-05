@@ -105,14 +105,12 @@ export class HomeComponent implements OnInit {
     }
   ];
 
+  private isSearching: boolean = false;
+
   constructor(private _us: UsersService) { }
 
   ngOnInit() {
     console.log(this._us.user);
-  }
-
-  private onSearch(event) {
-    console.log(event);
   }
 
   private onSearchChange(event) {

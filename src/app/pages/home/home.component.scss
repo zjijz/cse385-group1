@@ -2,6 +2,7 @@
 
 $searchbar-height: 75px;
 $other-height: calc((100vh - #{$searchbar-height} - 30px - 56px) / 2);
+$search-height: calc(100vh - #{$searchbar-height} - 30px - 56px);
 
 .home {
   @extend .page;
@@ -43,6 +44,21 @@ $other-height: calc((100vh - #{$searchbar-height} - 30px - 56px) / 2);
 
     #holds {
       height: $other-height;
+    }
+
+    #search {
+      height: $search-height;
+
+      div[title] * {
+        margin: 0;
+        padding: 0;
+
+        opacity: 0.7;
+      }
+
+      .books {
+
+      }
     }
   }
 }
