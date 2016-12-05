@@ -41,6 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
   onLogout() {
     console.log('Logout...');
 
-    this._us.logout();
+    this._us.logout().then(() => this._router.navigateByUrl('/'));
   }
 }

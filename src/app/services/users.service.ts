@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { User } from 'api/models';
+import { User, Review, Book } from 'api/models';
 
 import { DatabaseService } from './database.service';
 import { BooksService } from "./books.service";
@@ -48,6 +48,48 @@ export class UsersService {
 
   private cleanFriend(user: Object) {
     return { email: user['EmailSecond'] };
+  }
+
+  private cleanReview(review: Object) {
+    let cleanReview: Review = {};
+
+    if (review['Rating']) {
+      cleanReview.rating = review['Rating'];
+    }
+
+    if (review['Words']) {
+      cleanReview.words = review['Words'];
+    }
+
+    let user: User = {};
+
+    if (review['Fname']) {
+      user.first_name = review['Fname'];
+    }
+
+    if (review['Lname']) {
+      user.last_name = review['Lname'];
+    }
+
+    cleanReview.user = user;
+
+    let book: Book = {};
+
+    if (review['BookId']) {
+      book._id = review['BookId'];
+    }
+
+    if (review['Cover']) {
+      book.cover = review['Cover'];
+    }
+
+    if (review['Title']) {
+      book.title = review['Title'];
+    }
+
+    cleanReview.book = book;
+
+    return cleanReview;
   }
 
   // Validate login / get user info
@@ -156,13 +198,26 @@ export class UsersService {
 
   // Get reviews for all friends a user has
   // Or all reviews on the system if the user is a superuser
-  public getAllReviews() {
-    
+  public getAllReviews(): Promise<Review[]> {
+    return new Promise<Review[]>((resolve, reject) => {
+      let reviews: Review[] = [];
+
+      const query = (this.user.getValue().privilege == 1) ? '' : '';
+      this._ds.queryDB(query, { $email: this.user.getValue().email }).then(res => {
+        res.forEach(review => {
+          reviews.push(this.cleanReview(review));
+        });
+      });
+      return reviews;
+    });
   }
 
   // Get all reviews on DB (for superuser)
 
-  public logout() {
-    // stub
+  public logout(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.user.next(this.default);
+      resolve(null);
+    });
   }
 }
