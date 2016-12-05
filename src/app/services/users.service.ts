@@ -92,6 +92,41 @@ export class UsersService {
     return cleanReview;
   }
 
+  public getUser(email: string): Promise<User> {
+    return new Promise<User>((resolve, reject) => {
+      let user: User = {};
+      this._ds.queryDB('SELECT * FROM User WHERE Email = $email', {$email: email}).then(accounts => {
+        user = this.cleanUser(accounts[0]);
+
+        // Get holds, loans
+        this._bs.getUserHolds(email).then(res => {
+          user.holds = res;
+
+          this._bs.getUserLoans(email).then(res => {
+            user.loans = res;
+
+            // Get friends
+            this._ds.queryDB("SELECT EmailSecond FROM Friend WHERE EmailFirst = $email", {$email: email})
+              .then(friends => {
+                friends.forEach(friend => user.friends.push(this.cleanFriend(friend)));
+
+                this.getTotalHolds(email).then(num => {
+                  user.totalHolds = num;
+
+                  this.getTotalLoans(email).then(num => {
+                    user.totalLoans = num;
+
+                    // Resolve
+                    resolve(user);
+                  });
+                });
+              });
+          });
+        });
+      });
+    });
+  }
+
   // Validate login / get user info
   public login(email: string, password: string): Promise<any> {
     let user: User = {};
@@ -160,36 +195,8 @@ export class UsersService {
       this._ds.updateDB("UPDATE User SET Fname = $first, Lname = $last WHERE Email = $email",
         { $first: fname, $last: lname, $email: email })
         .then(() => {
-          let user: User = {};
-          this._ds.queryDB('SELECT * FROM User WHERE Email = $email', { $email: email }).then(accounts => {
-            user = this.cleanUser(accounts[0]);
-
-            // Get holds, loans
-            this._bs.getUserHolds(email).then(res => {
-              user.holds = res;
-
-              this._bs.getUserLoans(email).then(res => {
-                user.loans = res;
-
-                // Get friends
-                this._ds.queryDB("SELECT EmailSecond FROM Friend WHERE EmailFirst = $email", { $email: email })
-                  .then(friends => {
-                    friends.forEach(friend => user.friends.push(this.cleanFriend(friend)));
-
-                    this.getTotalHolds(email).then(num => {
-                      user.totalHolds = num;
-
-                      this.getTotalLoans(email).then(num => {
-                        user.totalLoans = num;
-
-                        // Set new user
-                        this.user.next(user);
-                      });
-                    });
-                  });
-              });
-            });
-
+          this.getUser(email).then(user => {
+            this.user.next(user);
             resolve(null);
           });
         });

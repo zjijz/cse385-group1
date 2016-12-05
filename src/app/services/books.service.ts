@@ -57,35 +57,48 @@ export class BooksService {
       cleanBook.num_available = parseInt(book['NumAvailable']);
     }
 
+    cleanBook.authors = [];
+
+    cleanBook.hasHold = false;
+    cleanBook.hasLoan = false;
+
     return cleanBook;
   }
 
   // Get Book by BookId
-  public getBookInfo(bookId: number): Promise<Book> {
+  public getBookInfo(email: string, bookId: number): Promise<Book> {
     return new Promise<Book>((resolve, reject) => {
       this._ds.queryDB("SELECT * FROM BookView WHERE BookId = $bookId", { $bookId: bookId })
         .then(res => {
-          resolve(this.cleanBook(res[0]));
+          let book: Book = this.cleanBook(res[0]);
 
           // Get Authors
+          this._ds.queryDB("SELECT * FROM Author WHERE BookId = $bookId", { $bookId: bookId }).then(authors => {
+            console.log('authors: ', authors);
+            authors.forEach(el => {
+              book.authors.push(el['Fname'] + ' ' + el['Lname'])
+            });
 
-          // Get Publishers
+            // Get genres
 
-          // Get loan info
+            // Get loan info
+            this._ds.queryDB("SELECT * FROM Loan WHERE BookId = $bookId AND Email = $email AND EndDate >= DATE('now')",
+              { $bookId: bookId, $email: email })
+              .then(res => {
+                if (res.length != 0) book.hasLoan = true;
 
-          // Get hold info
+                // Get hold info
+                this._ds.queryDB("SELECT * FROM Hold WHERE BookId = $bookId AND Email = $email AND EndDate >= DATE('now')",
+                  { $bookId: bookId, $email: email })
+                .then(res => {
+                  if (res.length != 0) book.hasHold = true;
+
+                  resolve(book);
+                });
+              });
+          });
         });
     });
-  }
-
-  // Get hold info by BookId
-  private getHoldInfo(bookId: number) {
-
-  }
-
-  // Get loan info by BookId
-  private getLoanInfo(bookId: number) {
-
   }
 
   // Get user loans

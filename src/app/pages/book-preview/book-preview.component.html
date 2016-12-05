@@ -19,9 +19,9 @@
         <p>{{book.summary}}</p>
         <material-input label="Title" idName="title" [(ngModel)]="book.title" [disabled]="true"></material-input>
         <material-input label="Authors" idName="authors" [(ngModel)]="authors" [disabled]="true"></material-input>
-        <material-input label="ISBN" idName="isbn" [(ngModel)]="book.isbn"></material-input>
-        <material-input label="Edition" idName="edition" [(ngModel)]="book.edition"></material-input>
-        <material-input label="Publisher" idName="publisher" [(ngModel)]="book.publisher"></material-input>
+        <material-input label="ISBN" idName="isbn" [(ngModel)]="book.isbn" [disabled]="true"></material-input>
+        <material-input label="Edition" idName="edition" [(ngModel)]="book.edition" [disabled]="true"></material-input>
+        <material-input label="Publisher" idName="publisher" [(ngModel)]="book.publisher" [disabled]="true"></material-input>
         <material-input label="Date Published" idName="pubDate" [(ngModel)]="book.pub_date" [disabled]="true"></material-input>
         <material-input label="Genres" idName="genre" [(ngModel)]="genres" [disabled]="true"></material-input>
       </div>
