@@ -95,7 +95,22 @@ export class BooksService {
   // Fuzzy search (search LIKE in title, author, publisher, date and merge them)
   public fuzzySearch(query: string): Promise<Book[]> {
     return new Promise<Book[]>((resolve, reject) => {
-      resolve([]);
+      let s =
+        "SELECT DISTINCT BookId, Title, Cover FROM Book " +
+        "WHERE Title LIKE '$search' OR Publisher LIKE '$search' OR PubDate LIKE '$search' " +
+        "UNION " +
+        "SELECT DISTINCT BookId, Title, Cover FROM Book NATURAL JOIN Author " +
+        "WHERE Fname LIKE '$search' OR Lname LIKE '$search' " +
+        "UNION " +
+        "SELECT DISTINCT BookId, Title, Cover FROM Book NATURAL JOIN BookGenre NATURAL JOIN Genre " +
+        "WHERE GenreName LIKE '$search'";
+      this._ds.queryDB(s.replace(/\$search/g, '%' + query + '%'))
+      .then(res => {
+          console.log(res);
+          let ret: Book[] = [];
+          res.forEach(el => ret.push(this.cleanBook(el)));
+          resolve(ret);
+      });
     });
   }
 

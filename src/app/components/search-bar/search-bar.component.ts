@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Book } from 'api/models';
 
+import { BooksService } from "../../services/books.service";
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -15,12 +17,14 @@ export class SearchBarComponent implements OnInit {
   @Output()
   private books = new EventEmitter<Book[]>();
 
-  constructor() { }
+  constructor(private _bs: BooksService) { }
 
   ngOnInit() { }
 
   search() {
     console.log('searching...');
+
+    this._bs.fuzzySearch('m').then(res => console.log(res));
   }
 
   private onInput(event) {

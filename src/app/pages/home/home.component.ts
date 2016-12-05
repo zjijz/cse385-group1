@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Book } from 'api/models';
-import {UsersService} from "../../services/users.service";
+
+import { UsersService } from "../../services/users.service";
+import { BooksService } from "../../services/books.service";
 
 @Component({
   selector: 'app-home',
@@ -107,7 +109,7 @@ export class HomeComponent implements OnInit {
 
   private isSearching: boolean = false;
 
-  constructor(private _us: UsersService) { }
+  constructor(private _us: UsersService, private _bs: BooksService) { }
 
   ngOnInit() {
     console.log(this._us.user);
