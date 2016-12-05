@@ -54,9 +54,9 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Issue if no holds or loans on user account
   - [ ] Get search working
 - [ ] Book Preview
-  - [ ] Display all book information
+  - [x] Display all book information
   - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
-  - [ ] Ability to open to reader if user has a loan for the book
+  - [x] Ability to open to reader if user has a loan for the book
 - [ ] Book Reader
   - [ ] Display text file as a scrolling p tag
 - [x] Dashboard

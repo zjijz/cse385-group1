@@ -2,7 +2,9 @@
 
 $searchbar-height: 75px;
 $other-height: calc((100vh - #{$searchbar-height} - 30px - 56px) / 2);
+$other-height-desktop: calc((100vh - #{$searchbar-height} - 40px - 64px) / 2);
 $search-height: calc(100vh - #{$searchbar-height} - 30px - 56px);
+$search-height-desktop: calc(100vh - #{$searchbar-height} - 40px - 64px);
 
 .home {
   @extend .page;
@@ -38,16 +40,20 @@ $search-height: calc(100vh - #{$searchbar-height} - 30px - 56px);
       height: $searchbar-height;
     }
 
-    #loans {
+    #loans, #holds {
       height: $other-height;
-    }
 
-    #holds {
-      height: $other-height;
+      @include desktop {
+        height: $other-height-desktop;
+      }
     }
 
     #search {
       height: $search-height;
+
+      @include desktop {
+        height: $search-height-desktop;
+      }
 
       div[title] * {
         margin: 0;
