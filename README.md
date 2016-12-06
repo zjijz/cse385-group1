@@ -53,9 +53,9 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] If no holds / loans, add a message to tell user to search for books
   - [x] Issue if no holds or loans on user account
   - [x] Get search working
-- [ ] Book Preview
+- [x] Book Preview
   - [x] Display all book information
-  - [ ] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
+  - [x] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
   - [x] Ability to open to reader if user has a loan for the book
 - [x] Book Reader
   - [x] Display text file as a scrolling p tag
@@ -65,8 +65,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 - [ ] Feed
   - [x] Show all reviews from friends in simple scroll
   - [ ] Add ability to delete posts
-  - [ ] Superuser shows all reviews with ability to delete
-  - [ ] Wire to backend
-  - [ ] Remove padding from around review location to clean up UI
-  - [ ] (Reach) Get a md-select component to mesh with theme better [Not doing]
-  - [ ] (Reach) Create notifications when friends create holds / loans [Not doing]
+  - [x] Superuser shows all reviews with ability to delete
+  - [ ] Test delete
+  - [ ] Test addition
+  - [x] Wire to backend

@@ -10,7 +10,7 @@
         <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active" *ngIf="!atLogin">Home</a>
         <a class="mdl-navigation__link" routerLink="/dashboard" routerLinkActive="active" *ngIf="!atLogin">Dashboard</a>
         <a class="mdl-navigation__link" routerLink="/feed" routerLinkActive="active" *ngIf="!atLogin">Feed</a>
-        <a class="mdl-navigation__link" (click)="onLogout()" routerLinkActive="active" *ngIf="!atLogin">Logout</a>
+        <a class="mdl-navigation__link logout" (click)="onLogout()" routerLinkActive="active" *ngIf="!atLogin">Logout</a>
       </nav>
     </div>
   </header>

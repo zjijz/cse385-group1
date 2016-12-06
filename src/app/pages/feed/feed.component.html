@@ -28,7 +28,7 @@
       </material-card>
     </div>
 
-    <div class="review" *ngFor="let review of reviews">
+    <div class="review" *ngFor="let review of _us.reviews">
       <material-card [hasTitle]="true" [hasText]="true" [titleBorder]="true">
         <div class="title" title>
           <p class="title-bar">
@@ -45,6 +45,12 @@
           </p>
         </div>
       </material-card>
+      <button class="close-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab
+                      mdl-button--mini-fab mdl-button--accent"
+              (click)="deleteReview(review.user.email, review.book._id)"
+              *ngIf="_us.user.getValue().email == review.user.email">
+        <i class="material-icons">close</i>
+      </button>
     </div>
   </div>
 </div>

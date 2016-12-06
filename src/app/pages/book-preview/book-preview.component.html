@@ -11,7 +11,7 @@
         <button mdl class="mdl-button mdl-js-button mdl-button--primary"
                 (click)="openReader()" *ngIf="book.hasLoan">Read Book</button>
         <button mdl class="mdl-button mdl-js-button mdl-button--primary"
-                (click)="placeOnLoan()" *ngIf="book.num_available > 0 && !book.hasLoan">Place on Hold</button>
+                (click)="placeOnLoan()" *ngIf="book.num_available > 0 && !book.hasLoan && !book.hasHold">Rent</button>
         <button mdl class="mdl-button mdl-js-button mdl-button--primary"
                 disabled *ngIf="book.hasHold">On Hold</button>
       </div>

@@ -10,6 +10,8 @@ import { BooksService } from "./books.service";
 export class UsersService {
 
   public user: BehaviorSubject<User>;
+  public reviews: Review[];
+
   private default: User = <User> { email: null, privilege: null, picture: null, first_name: null, last_name: null,
     friends: [], loans: [], holds: [], totalLoans: 0, totalHolds: 0, allTitles: [] };
 
@@ -17,6 +19,7 @@ export class UsersService {
 
   constructor(private _ds: DatabaseService, private _bs: BooksService) {
     this.user = new BehaviorSubject<User>(this.default);
+    this.reviews = [];
   }
 
   // Clean results
@@ -157,13 +160,16 @@ export class UsersService {
 
                         // Set new user
                         this.user.next(user);
+
+                        // Get reviews Async
+                        this.getAllReviews(this.user.getValue()).then(res => this.reviews = res);
+
+                        resolve(null);
                       });
                     });
                   });
               });
             });
-
-            resolve(null);
           } else {
             reject('Username and password do not match.');
           }
@@ -205,17 +211,24 @@ export class UsersService {
 
   // Get reviews for all friends a user has
   // Or all reviews on the system if the user is a superuser
-  public getAllReviews(): Promise<Review[]> {
+  public getAllReviews(user: User): Promise<Review[]> {
     return new Promise<Review[]>((resolve, reject) => {
       let reviews: Review[] = [];
-
-      const query = (this.user.getValue().privilege == 1) ? '' : '';
-      this._ds.queryDB(query, { $email: this.user.getValue().email }).then(res => {
+      const query = (user.privilege == 1)
+        ? "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
+          "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
+          "ORDER BY DateAdded"
+        : "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
+          "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
+          "WHERE Email IN (SELECT EmailSecond FROM Friend WHERE EmailFirst = $email) " +
+          "ORDER BY DateAdded;";
+      this._ds.queryDB(query, { $email: user.email }).then(res => {
+        console.log('Reviews: ', reviews);
         res.forEach(review => {
           reviews.push(this.cleanReview(review));
         });
       });
-      return reviews;
+      resolve(reviews);
     });
   }
 
@@ -225,6 +238,16 @@ export class UsersService {
     return new Promise<any>((resolve, reject) => {
       this.user.next(this.default);
       resolve(null);
+    });
+  }
+
+  public addReview(email: string, bookId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {});
+  }
+
+  public deleteReview(email: string, bookId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._ds.updateDB("", {})
     });
   }
 }

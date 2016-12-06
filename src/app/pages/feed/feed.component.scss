@@ -5,6 +5,8 @@ $fab-size: 56px;
 .feed {
   @extend .page;
 
+  position: relative;
+
   .feed-wrapper {
     width: 100%;
     max-width: $column-size;
@@ -12,21 +14,43 @@ $fab-size: 56px;
     .add-new {
       position: fixed;
 
-      right: map-get($sizings, normal);
+      left: map-get($sizings, normal);
       bottom: map-get($sizings, normal);
 
       z-index: 2000;
 
       @include fullwidth {
-        right: calc((100vw - 750px) / 2);
+        left: calc((100vw - 750px) / 2);
       }
     }
 
     .review {
-      padding-bottom: map-get($sizings, normal);
+      padding-bottom: map-get($sizings, double);
+      position: relative;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
 
       @include desktop {
         padding-bottom: map-get($sizings, double);
+      }
+
+      .close-button {
+        position: absolute;
+        top: map-get($sizings, half);
+        right: map-get($sizings, half);
+        z-index: 10;
+
+        @include tablet {
+          top: -1 * map-get($sizings, normal);
+          right: -1 * map-get($sizings, normal);
+        }
+
+        @include desktop {
+          top: -1 * map-get($sizings, normal);
+          right: -1 * map-get($sizings, normal);
+        }
       }
 
       p {

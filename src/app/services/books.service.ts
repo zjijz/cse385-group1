@@ -58,6 +58,7 @@ export class BooksService {
     }
 
     cleanBook.authors = [];
+    cleanBook.genres = [];
 
     cleanBook.hasHold = false;
     cleanBook.hasLoan = false;
@@ -74,28 +75,32 @@ export class BooksService {
 
           // Get Authors
           this._ds.queryDB("SELECT * FROM Author WHERE BookId = $bookId", { $bookId: bookId }).then(authors => {
-            console.log('authors: ', authors);
             authors.forEach(el => {
               book.authors.push(el['Fname'] + ' ' + el['Lname'])
             });
 
             // Get genres
+            this._ds.queryDB("SELECT GenreName From BookGenre NATURAL JOIN Genre WHERE BookId = $bookId",
+              { $bookId: bookId })
+            .then(genres => {
+              genres.forEach(el => book.genres.push(el['GenreName']))
 
-            // Get loan info
-            this._ds.queryDB("SELECT * FROM Loan WHERE BookId = $bookId AND Email = $email AND EndDate >= DATE('now')",
-              { $bookId: bookId, $email: email })
+              // Get loan info
+              this._ds.queryDB("SELECT * FROM Loan WHERE BookId = $bookId AND Email = $email AND EndDate >= DATE('now')",
+                { $bookId: bookId, $email: email })
               .then(res => {
                 if (res.length != 0) book.hasLoan = true;
 
                 // Get hold info
                 this._ds.queryDB("SELECT * FROM Hold WHERE BookId = $bookId AND Email = $email AND EndDate >= DATE('now')",
-                  { $bookId: bookId, $email: email })
-                .then(res => {
-                  if (res.length != 0) book.hasHold = true;
+                  {$bookId: bookId, $email: email})
+                  .then(res => {
+                    if (res.length != 0) book.hasHold = true;
 
-                  resolve(book);
-                });
+                    resolve(book);
+                  });
               });
+            });
           });
         });
     });
@@ -147,5 +152,4 @@ export class BooksService {
       });
     });
   }
-
 }

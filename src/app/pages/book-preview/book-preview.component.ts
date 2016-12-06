@@ -59,7 +59,8 @@ export class BookPreviewComponent implements OnInit {
 
       this._bs.getBookInfo(this._us.user.getValue().email, bookId).then(book => {
         this.book = book;
-        console.log(this.book);
+        this.authors = this.book.authors.join(', ');
+        this.genres = this.book.genres.join(', ');
       });
     });
   }
