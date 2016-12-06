@@ -183,15 +183,27 @@ export class UsersService {
   // Get total number of holds and loans
   private getTotalHolds(email: string): Promise<number> {
     return new Promise<any>((resolve, reject) => {
-      this._ds.queryDB("SELECT COUNT(*) FROM Hold WHERE Email = $email GROUP BY Email;", { $email: email })
-        .then(res => resolve(res[0]['COUNT(*)']));
+      this._ds.queryDB("SELECT COUNT(*) FROM Hold WHERE Email = $email GROUP BY Email", { $email: email })
+        .then(res => {
+          if (res[0] && res['COUNT(*)']) {
+            resolve(res[0]['COUNT(*)'])
+          } else {
+            resolve(0);
+          }
+        });
     });
   }
 
   private getTotalLoans(email: string): Promise<number> {
     return new Promise<any>((resolve, reject) => {
-      this._ds.queryDB("SELECT COUNT(*) FROM Loan WHERE Email = $email GROUP BY Email;", { $email: email })
-        .then(res => resolve(res[0]['COUNT(*)']));
+      this._ds.queryDB("SELECT COUNT(*) FROM Loan WHERE Email = $email GROUP BY Email", { $email: email })
+        .then(res => {
+          if (res[0] && res['COUNT(*)']) {
+            resolve(res[0]['COUNT(*)'])
+          } else {
+            resolve(0);
+          }
+        });
     });
   }
 
@@ -214,20 +226,15 @@ export class UsersService {
   public getAllReviews(user: User): Promise<Review[]> {
     return new Promise<Review[]>((resolve, reject) => {
       let reviews: Review[] = [];
-      const query = (user.privilege == 1)
+      const query = ((user.privilege == 1)
         ? "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
           "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
-          "ORDER BY DateAdded"
+          "ORDER BY DateAdded DESC"
         : "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
           "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
-          "WHERE Email IN (SELECT EmailSecond FROM Friend WHERE EmailFirst = $email) " +
-          "ORDER BY DateAdded;";
-      this._ds.queryDB(query, { $email: user.email }).then(res => {
-        console.log('Reviews: ', reviews);
-        res.forEach(review => {
-          reviews.push(this.cleanReview(review));
-        });
-      });
+          "WHERE Email IN (SELECT EmailSecond FROM Friend WHERE EmailFirst = $email) OR Email = $email " +
+          "ORDER BY DateAdded DESC").replace(/\$email/g, "'" + user.email + "'");
+      this._ds.queryDB(query).then(res => res.forEach(review => reviews.push(this.cleanReview(review))));
       resolve(reviews);
     });
   }

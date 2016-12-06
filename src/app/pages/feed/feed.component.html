@@ -48,7 +48,7 @@
       <button class="close-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab
                       mdl-button--mini-fab mdl-button--accent"
               (click)="deleteReview(review.user.email, review.book._id)"
-              *ngIf="_us.user.getValue().email == review.user.email">
+              *ngIf="(_us.user.getValue().email == review.user.email) || (_us.user.getValue().privilege == 1)">
         <i class="material-icons">close</i>
       </button>
     </div>
