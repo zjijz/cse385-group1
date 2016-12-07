@@ -13,47 +13,47 @@ export class BooksService {
   private cleanBook(book: Object): Book {
     let cleanBook: Book = {};
 
-    if (book['BookId']) {
+    if (book['BookId'] != null) {
       cleanBook._id = parseInt(book['BookId']);
     }
 
-    if (book['ISBN']) {
+    if (book['ISBN'] != null) {
       cleanBook.isbn = book['ISBN'];
     }
 
-    if (book['Title']) {
+    if (book['Title'] != null) {
       cleanBook.title = book['Title'];
     }
 
-    if (book['Edition']) {
+    if (book['Edition'] != null) {
       cleanBook.edition = book['Edition'];
     }
 
-    if (book['Publisher']) {
+    if (book['Publisher'] != null) {
       cleanBook.publisher = book['Publisher'];
     }
 
-    if (book['PubDate']) {
+    if (book['PubDate'] != null) {
       cleanBook.pub_date = book['PubDate'];
     }
 
-    if (book['Summary']) {
+    if (book['Summary'] != null) {
       cleanBook.summary = book['Summary'];
     }
 
-    if (book['File']) {
+    if (book['File'] != null) {
       cleanBook.file = book['File'];
     }
 
-    if (book['Cover']) {
+    if (book['Cover'] != null) {
       cleanBook.cover = book['Cover'];
     }
 
-    if (book['NumCopies']) {
+    if (book['NumCopies'] != null) {
       cleanBook.num_copies = parseInt(book['NumCopies']);
     }
 
-    if (book['NumAvailable']) {
+    if (book['NumAvailable'] != null) {
       cleanBook.num_available = parseInt(book['NumAvailable']);
     }
 

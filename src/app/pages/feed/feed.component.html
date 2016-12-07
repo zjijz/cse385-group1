@@ -1,7 +1,7 @@
 <div mdl class="feed">
   <div class="feed-wrapper">
     <button class="add-new mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"
-            (click)="showNew = true" *ngIf="this._us.user.getValue().availToReview.length > 0">
+            (click)="showNew = true" [disabled]="this._us.user.getValue().availToReview.length == 0">
       <i class="material-icons">add</i>
     </button>
 

@@ -24,7 +24,10 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() { }
 
   search() {
-    this._bs.fuzzySearch(this.query).then(res => this.books.emit(res));
+    this._bs.fuzzySearch(this.query).then(res => {
+      console.log(res);
+      this.books.emit(res)
+    });
   }
 
   private onInput(event) {

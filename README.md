@@ -57,7 +57,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Adding loans
   - [ ] Adding holds
   - [ ] Weird graphical glitch when adding another book to hold / loan scroller (book's aren't right next to each other)
-  - [ ] Issue with searching not always having book id?
+  - [x] Issue with searching not always having book id?
 - [x] Book Preview
   - [x] Display all book information
   - [x] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
@@ -74,4 +74,4 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Test delete
   - [x] Test addition
   - [x] Wire to backend
-  - [ ] Make message submit close and reset when clicking submit (after insert)
+  - [x] Make message submit close and reset when clicking submit (after insert)

@@ -67,7 +67,8 @@ export class FeedComponent implements OnInit {
     this._us.addReview(this._us.user.getValue().email,
                        parseInt(this.bookElement.nativeElement.value),
                        parseInt(this.ratingElement.nativeElement.value),
-                       this.reviewElement.nativeElement.value);
+                       this.reviewElement.nativeElement.value)
+      .then(() => this.showNew = false);
   }
 
   deleteReview(email: string, bookId: number) {

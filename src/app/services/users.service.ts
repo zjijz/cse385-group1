@@ -26,23 +26,23 @@ export class UsersService {
   private cleanUser(user: Object) {
     let cleanUser: User = { holds: [], loans: [], friends: [] };
 
-    if (user['Email']) {
+    if (user['Email'] != null) {
       cleanUser.email = user['Email'];
     }
 
-    if (user['Fname']) {
+    if (user['Fname'] != null) {
       cleanUser.first_name = user['Fname'];
     }
 
-    if (user['Lname']) {
+    if (user['Lname'] != null) {
       cleanUser.last_name = user['Lname'];
     }
 
-    if (user['Picture']) {
+    if (user['Picture'] != null) {
       cleanUser.picture = user['Picture'];
     }
 
-    if (user['PrivId']) {
+    if (user['PrivId'] != null) {
       cleanUser.privilege = parseInt(user['PrivId']);
     }
 
