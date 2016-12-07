@@ -40,10 +40,10 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] Fix issue with drawer not closing on reroute
   - [x] Fix link issues showing on login page
   - [ ] Add a route guard to autoroute to login if user is not logged in
-- [ ] Login page
+- [x] Login page
   - [x] Form
   - [x] Wired to backend
-  - [ ] Add 'enter' logs in feature on login page
+  - [x] Add 'enter' logs in feature on login page
 - [x] Home page
   - [x] Loan scroller
   - [x] Hold scroller

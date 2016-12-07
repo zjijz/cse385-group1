@@ -292,4 +292,38 @@ export class UsersService {
       })
     );
   }
+
+  public putBookOnHold(bookId: number, email: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._ds.updateDB("INSERT INTO Hold VALUES ( $bookId, $email, DATE('now'), DATE('now', '+14 days') )",
+        { $bookId: bookId, $email: email })
+      .then(() => {
+        let user: User = this.user.getValue();
+        this._bs.getUserHolds(email).then(holds => {
+          user.holds = holds;
+
+          this.user.next(user);
+
+          resolve(null);
+        });
+      });
+    });
+  }
+
+  public putBookOnLoan(bookId: number, email: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._ds.updateDB("INSERT INTO Loan VALUES ( $bookId, $email, DATE('now'), DATE('now', '+14 days') )",
+        { $bookId: bookId, $email: email })
+        .then(() => {
+          let user: User = this.user.getValue();
+          this._bs.getUserLoans(email).then(loans => {
+            user.loans = loans;
+
+            this.user.next(user);
+
+            resolve(null);
+          });
+        });
+    });
+  }
 }

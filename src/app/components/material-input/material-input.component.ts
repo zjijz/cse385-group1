@@ -62,8 +62,10 @@ export class MaterialInput implements ControlValueAccessor, OnChanges {
     private isValid: boolean;
 
     private onChange = (_) => {};
-
     private onTouched = () => {};
+
+    @Input('hack')
+    private onKeyUp = (_) => {};
 
     ngOnChanges(changes) {
         let colorState = changes.colorName;
@@ -88,5 +90,9 @@ export class MaterialInput implements ControlValueAccessor, OnChanges {
 
     writeValue(value: any) {
         this.value = value;
+    }
+
+    keyUp($event) {
+      this.onKeyUp($event);
     }
 }

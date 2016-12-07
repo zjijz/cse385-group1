@@ -26,4 +26,8 @@ export class LoginComponent implements OnInit {
       .catch(err => this.errString = err);
   }
 
+  onKeyUp(event) {
+    if (event.keyCode === 13) this.login();
+  }
+
 }

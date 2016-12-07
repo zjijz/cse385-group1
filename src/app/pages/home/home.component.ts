@@ -111,7 +111,5 @@ export class HomeComponent implements OnInit {
 
   constructor(private _us: UsersService) { }
 
-  ngOnInit() {
-    console.log(this._us.user);
-  }
+  ngOnInit() { }
 }

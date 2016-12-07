@@ -66,11 +66,23 @@ export class BookPreviewComponent implements OnInit {
   }
 
   placeOnHold() {
-
+    this._us.putBookOnHold(this.book._id, this._us.user.getValue().email).then(() => {
+      this._bs.getBookInfo(this._us.user.getValue().email, this.book._id).then(book => {
+        this.book = book;
+        this.authors = this.book.authors.join(', ');
+        this.genres = this.book.genres.join(', ');
+      });
+    });
   }
 
   placeOnLoan() {
-
+    this._us.putBookOnLoan(this.book._id, this._us.user.getValue().email).then(() => {
+      this._bs.getBookInfo(this._us.user.getValue().email, this.book._id).then(book => {
+        this.book = book;
+        this.authors = this.book.authors.join(', ');
+        this.genres = this.book.genres.join(', ');
+      });
+    });
   }
 
   openReader() {
