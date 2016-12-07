@@ -278,7 +278,6 @@ export class UsersService {
         { $email: email, $bookId: bookId })
       .then(() => {
         this.getAllReviews(this.user.getValue()).then(reviews => {
-          console.log('Reviews: ', reviews);
           this.reviews = reviews;
 
           let user: User = this.user.getValue();
