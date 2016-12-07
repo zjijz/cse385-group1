@@ -50,6 +50,7 @@ $search-height-desktop: calc(100vh - #{$searchbar-height} - 40px - 64px);
 
     #search {
       height: $search-height;
+      overflow-y: scroll;
 
       @include desktop {
         height: $search-height-desktop;
@@ -68,7 +69,6 @@ $search-height-desktop: calc(100vh - #{$searchbar-height} - 40px - 64px);
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
-        overflow-y: scroll;
 
         a {
           height: 250px;
