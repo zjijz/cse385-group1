@@ -257,9 +257,7 @@ export class UsersService {
         { $bookId: bookId, $email: email, $rating: rating, $review: review})
         .then(() => {
           this.getAllReviews(this.user.getValue()).then(reviews => {
-            let rvs: Review[] = [];
-            reviews.forEach(review => rvs.push(this.cleanReview(review)));
-            this.reviews = rvs;
+            this.reviews = reviews;
 
             let user: User = this.user.getValue();
             this._bs.getBooksToReview(email).then(books => {
@@ -281,10 +279,7 @@ export class UsersService {
       .then(() => {
         this.getAllReviews(this.user.getValue()).then(reviews => {
           console.log('Reviews: ', reviews);
-
-          let rvs: Review[] = [];
-          reviews.forEach(review => rvs.push(this.cleanReview(review)));
-          this.reviews = rvs;
+          this.reviews = reviews;
 
           let user: User = this.user.getValue();
           this._bs.getBooksToReview(email).then(books => {
