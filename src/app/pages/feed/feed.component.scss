@@ -118,8 +118,26 @@ $fab-size: 56px;
           padding-bottom: map-get($sizings, half);
         }
 
-        p.title-bar {
-          width: 80px;
+        div.one {
+          p.title-bar {
+            width: 80px;
+          }
+        }
+
+        div.two {
+          padding: 0;
+
+          @include tablet {
+            padding-left: map-get($sizings, quadruple);
+          }
+
+          @include desktop {
+            padding-left: map-get($sizings, quadruple);
+          }
+
+          p {
+            width: 55px;
+          }
         }
       }
 

@@ -8,20 +8,33 @@
     <div class="review-creator review" *ngIf="showNew">
       <material-card [hasTitle]="true" [hasText]="true" [hasActions]="true" [titleBorder]="true" [actionsBorder]="true">
         <div class="title" title>
-          <p class="title-bar">Review for: </p>
-          <select>
-            <option value="opt.book_id" *ngFor="let opt of availReview">{{opt.book_title}}</option>
-          </select>
+          <div class="one">
+            <p class="title-bar">Review for: </p>
+            <select #book>
+              <option [attr.value]="opt._id" *ngFor="let opt of this._us.user.getValue().availToReview">{{opt.title}}</option>
+            </select>
+          </div>
+          <div class="two">
+            <p class="title-bar two">Rating: </p>
+            <select #rating>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
         </div>
         <div class="review-area" text>
           <div mdl class="mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" type="text" rows= "2" id="reviewarea" (input)="isEdited = true"></textarea>
+            <textarea #review class="mdl-textfield__input" type="text" rows= "2" id="reviewarea"
+                      (input)="isEdited = true"></textarea>
             <label class="mdl-textfield__label" for="reviewarea">Write review...</label>
           </div>
         </div>
         <div actions>
           <button mdl class="mdl-button mdl-js-button mdl-button--primary" [disabled]="!isEdited"
-                  (click)="return;">Submit</button>
+                  (click)="addReview()">Submit</button>
           <button mdl class="mdl-button mdl-js-button mdl-button--primary"
                   (click)="showNew = false; isEdited = false">Cancel</button>
         </div>

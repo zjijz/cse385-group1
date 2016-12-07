@@ -13,7 +13,7 @@ export class UsersService {
   public reviews: Review[];
 
   private default: User = <User> { email: null, privilege: null, picture: null, first_name: null, last_name: null,
-    friends: [], loans: [], holds: [], totalLoans: 0, totalHolds: 0, allTitles: [] };
+    friends: [], loans: [], holds: [], totalLoans: 0, totalHolds: 0, availToReview: [] };
 
   private sql = window['SQL'];
 
@@ -119,8 +119,15 @@ export class UsersService {
                   this.getTotalLoans(email).then(num => {
                     user.totalLoans = num;
 
-                    // Resolve
-                    resolve(user);
+                    this._bs.getBooksToReview(email).then(bks => {
+                      user.availToReview = bks;
+
+                      // Get reviews Async
+                      this.getAllReviews(this.user.getValue()).then(res => this.reviews = res);
+
+                      // Resolve
+                      resolve(user);
+                    });
                   });
                 });
               });
@@ -158,13 +165,17 @@ export class UsersService {
                       this.getTotalLoans(email).then(num => {
                         user.totalLoans = num;
 
-                        // Set new user
-                        this.user.next(user);
+                        this._bs.getBooksToReview(email).then(bks => {
+                          user.availToReview = bks;
 
-                        // Get reviews Async
-                        this.getAllReviews(this.user.getValue()).then(res => this.reviews = res);
+                          // Set new user
+                          this.user.next(user);
 
-                        resolve(null);
+                          // Get reviews Async
+                          this.getAllReviews(this.user.getValue()).then(res => this.reviews = res);
+
+                          resolve(null);
+                        });
                       });
                     });
                   });
@@ -227,15 +238,17 @@ export class UsersService {
     return new Promise<Review[]>((resolve, reject) => {
       let reviews: Review[] = [];
       const query = ((user.privilege == 1)
-        ? "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
+        ? "SELECT BookId, Cover, Title, Email, Fname, Lname, Rating, Words, DateAdded " +
           "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
           "ORDER BY DateAdded DESC"
-        : "SELECT BookId, Cover, Title, Fname, Lname, Rating, Words, DateAdded " +
+        : "SELECT BookId, Cover, Title, Email, Fname, Lname, Rating, Words, DateAdded " +
           "FROM Review NATURAL JOIN Book NATURAL JOIN User " +
           "WHERE Email IN (SELECT EmailSecond FROM Friend WHERE EmailFirst = $email) OR Email = $email " +
           "ORDER BY DateAdded DESC").replace(/\$email/g, "'" + user.email + "'");
-      this._ds.queryDB(query).then(res => res.forEach(review => reviews.push(this.cleanReview(review))));
-      resolve(reviews);
+      this._ds.queryDB(query).then(res => res.forEach(review => {
+        reviews.push(this.cleanReview(review));
+        resolve(reviews);
+      }));
     });
   }
 
@@ -248,13 +261,21 @@ export class UsersService {
     });
   }
 
-  public addReview(email: string, bookId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {});
+  public addReview(email: string, bookId: number, rating: number, review: string): Promise<any> {
+    return new Promise<any>((resolve, reject) =>
+      this._ds.updateDB("INSERT INTO Review VALUES ( $bookId, $email, $rating, $review, DATE('now') )",
+        { $bookId: bookId, $email: email, $rating: rating, $review: review})
+        .then(() => {
+          this.getAllReviews(this.user.getValue());
+          resolve(null);
+        })
+    );
   }
 
   public deleteReview(email: string, bookId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      this._ds.updateDB("", {})
-    });
+    return new Promise<any>((resolve, reject) =>
+      this._ds.updateDB("DELETE FROM Review WHERE BookId = $bookId AND Email = $email",
+        { $email: email, $bookId: bookId }).then(() => resolve(null))
+    );
   }
 }

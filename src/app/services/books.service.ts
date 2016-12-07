@@ -106,6 +106,27 @@ export class BooksService {
     });
   }
 
+  public getBooksToReview(email: string) {
+    return new Promise<Book[]>((resolve, reject) => {
+      const s = "SELECT BookId, Title FROM Book NATURAL JOIN Loan " +
+        "WHERE Email = $email " +
+        "EXCEPT " +
+        "SELECT BookId, Title FROM Review NATURAL JOIN Book " +
+        "WHERE Email = $email".replace(/\$email/g, "'" + email + "'");
+
+      console.log(s);
+
+      this._ds.queryDB(s, { $email: email })
+        .then(books => {
+          console.log('Books loaned: ', books);
+
+          let bks: Book[] = [];
+          books.forEach(bk => bks.push(this.cleanBook(bk)));
+          resolve(bks);
+        });
+    });
+  }
+
   // Get user loans
   public getUserLoans(email: string): Promise<Book[]> {
     return new Promise<Book[]>((resolve, reject) => {

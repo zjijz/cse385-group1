@@ -54,6 +54,6 @@ declare module 'api/models' {
     last_name?: string;
     totalLoans?: number;
     totalHolds?: number;
-    allTitles?: string[];
+    availToReview?: Book[];
   }
 }
