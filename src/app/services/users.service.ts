@@ -64,17 +64,7 @@ export class UsersService {
       cleanReview.words = review['Words'];
     }
 
-    let user: User = {};
-
-    if (review['Fname']) {
-      user.first_name = review['Fname'];
-    }
-
-    if (review['Lname']) {
-      user.last_name = review['Lname'];
-    }
-
-    cleanReview.user = user;
+    cleanReview.user = this.cleanUser(review);
 
     let book: Book = {};
 
@@ -266,8 +256,20 @@ export class UsersService {
       this._ds.updateDB("INSERT INTO Review VALUES ( $bookId, $email, $rating, $review, DATE('now') )",
         { $bookId: bookId, $email: email, $rating: rating, $review: review})
         .then(() => {
-          this.getAllReviews(this.user.getValue());
-          resolve(null);
+          this.getAllReviews(this.user.getValue()).then(reviews => {
+            let rvs: Review[] = [];
+            reviews.forEach(review => rvs.push(this.cleanReview(review)));
+            this.reviews = rvs;
+
+            let user: User = this.user.getValue();
+            this._bs.getBooksToReview(email).then(books => {
+              user.availToReview = books;
+
+              this.user.next(user);
+
+              resolve(null);
+            });
+          });
         })
     );
   }
@@ -275,7 +277,25 @@ export class UsersService {
   public deleteReview(email: string, bookId: number): Promise<any> {
     return new Promise<any>((resolve, reject) =>
       this._ds.updateDB("DELETE FROM Review WHERE BookId = $bookId AND Email = $email",
-        { $email: email, $bookId: bookId }).then(() => resolve(null))
+        { $email: email, $bookId: bookId })
+      .then(() => {
+        this.getAllReviews(this.user.getValue()).then(reviews => {
+          console.log('Reviews: ', reviews);
+
+          let rvs: Review[] = [];
+          reviews.forEach(review => rvs.push(this.cleanReview(review)));
+          this.reviews = rvs;
+
+          let user: User = this.user.getValue();
+          this._bs.getBooksToReview(email).then(books => {
+            user.availToReview = books;
+
+            this.user.next(user);
+
+            resolve(null);
+          });
+        });
+      })
     );
   }
 }

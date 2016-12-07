@@ -71,6 +71,6 @@ export class FeedComponent implements OnInit {
   }
 
   deleteReview(email: string, bookId: number) {
-    console.log(email, bookId);
+    this._us.deleteReview(email, bookId).then(() => console.log(this._us.reviews));
   }
 }
