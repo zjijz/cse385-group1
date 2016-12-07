@@ -54,8 +54,9 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
   - [x] If no holds / loans, add a message to tell user to search for books
   - [x] Issue if no holds or loans on user account
   - [x] Get search working
-  - [ ] Adding loans
+  - [x] Adding loans
   - [ ] Adding holds
+  - [ ] Weird graphical glitch when adding another book to hold / loan scroller
 - [x] Book Preview
   - [x] Display all book information
   - [x] Run queries to get if book is on user's hold or loan lists (and show cards based on this)
