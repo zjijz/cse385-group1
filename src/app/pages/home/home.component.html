@@ -3,7 +3,8 @@
     <app-search-bar id="searchbar" (isSearching)="isSearching = $event" (books)="searchBooks = $event"></app-search-bar>
     <app-book-scroller id="loans" [books]="_us.user.getValue().loans" title="Loans" *ngIf="!isSearching"></app-book-scroller>
     <app-book-scroller id="holds" [books]="_us.user.getValue().holds" title="Holds" *ngIf="!isSearching"></app-book-scroller>
-    <material-card id="search" *ngIf="isSearching" [hasTitle]="true" [hasText]="true" [titleBorder]="true">
+
+    <!--<material-card id="search" *ngIf="isSearching" [hasTitle]="true" [hasText]="true" [titleBorder]="true">
       <div title>
         <p>Search Results</p>
       </div>
@@ -12,6 +13,19 @@
           <img [src]="book.cover" [alt]="book.title + ' Cover'">
         </a>
       </div>
-    </material-card>
+    </material-card>-->
+
+    <div mdl id="search" class="material-card mdl-card mdl-shadow--4dp" *ngIf="isSearching">
+      <div class="mdl-card__title mdl-card--border">
+        <p>Search Results</p>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="books">
+          <a [routerLink]="'/preview/' + book._id" *ngFor="let book of searchBooks">
+            <img [src]="book.cover" [alt]="book.title + ' Cover'">
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
